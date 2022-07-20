@@ -1,0 +1,20 @@
+h1 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue";
+    font-size: 35px;
+    font-weight: 300;
+    margin-top: 100px;
+    margin-left: 100px;
+    color: #46b079;
+}
+
+h2 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue";
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-left: 100px;
+    color: #4a417b;
+    width: 40%;
+    text-align: justify;
+    line-height: 1.5;
+}
