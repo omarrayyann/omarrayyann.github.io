@@ -17,3 +17,21 @@ body, h1, h2, h3, p, span, a {
    }
 
    
+   #longNav {
+    display: run-in;
+  }
+  #shortNav {
+    display: none;
+  }
+
+   @media (max-width: 520px) {
+    #longNav {
+      display: none;
+    }
+    #shortNav {
+      display: block;
+    }
+  }
+
+
+   
