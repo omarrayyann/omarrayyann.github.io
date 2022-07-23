@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import OrayyanWebsite from './OrayyanWebsite.js'
-import reportWebVitals from './reportWebVitals';
+// FUNCTION - Switching to dropdown meny if the screen width is less than the maxWidth
+maxWidth = 520
+function correctNavBar(){
+  console.log("asas")
+  if (maxWidth>window.innerWidth && !this.document.getElementById("longNav").classList.contains("uk-hidden")){
+    this.document.getElementById("longNav").classList.add("uk-hidden");
+    this.document.getElementById("shortNav").classList.remove("uk-hidden");
+  }
+  else if (maxWidth<=window.innerWidth && !this.document.getElementById("shortNav").classList.contains("uk-hidden")){
+    this.document.getElementById("shortNav").classList.add("uk-hidden");
+    this.document.getElementById("longNav").classList.remove("uk-hidden");
+  }
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <OrayyanWebsite/>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+window.addEventListener('resize', correctNavBar)
