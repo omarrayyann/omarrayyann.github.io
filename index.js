@@ -2,11 +2,11 @@
 maxWidth = 520
 function correctNavBar(){
   console.log("asas")
-  if (maxWidth>window.innerWidth && !this.document.getElementById("longNav").classList.contains("uk-hidden")){
+  if (maxWidth>window.innerWidth && this.document.getElementById("shortNav").classList.contains("uk-hidden")){
     this.document.getElementById("longNav").classList.add("uk-hidden");
     this.document.getElementById("shortNav").classList.remove("uk-hidden");
   }
-  else if (maxWidth<=window.innerWidth && !this.document.getElementById("shortNav").classList.contains("uk-hidden")){
+  else if (maxWidth<=window.innerWidth && this.document.getElementById("longNav").classList.contains("uk-hidden")){
     this.document.getElementById("shortNav").classList.add("uk-hidden");
     this.document.getElementById("longNav").classList.remove("uk-hidden");
   }
