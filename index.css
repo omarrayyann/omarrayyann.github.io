@@ -91,3 +91,9 @@ body, h1, h2, h3, p, span, a {
     transform: rotate(-45deg) translate(0, 0);
   }
 }
+
+
+.some-div .uk-icon {
+  position: relative;
+  top: -3px;
+}
