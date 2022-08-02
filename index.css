@@ -28,7 +28,7 @@ a {
   display: none;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 420px) {
   #longNav {
     display: none;
   }
