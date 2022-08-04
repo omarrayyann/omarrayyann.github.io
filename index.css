@@ -16,8 +16,8 @@ h3,
 p,
 span,
 a {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica 25 UltraLight", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+
   font-weight: 300;
 }
 
