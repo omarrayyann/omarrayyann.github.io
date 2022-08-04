@@ -14,6 +14,13 @@ code {
   src: url(src/HelveticaNeue\ Light.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url(src/HelveticaNeueLt.ttf) format("truetype");
+}
+
+
+
 body,
 h1,
 h2,
