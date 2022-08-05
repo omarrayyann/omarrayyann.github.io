@@ -20,6 +20,10 @@ code {
 }
 
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 body,
 h1,

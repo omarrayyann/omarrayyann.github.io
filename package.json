@@ -1,3 +1,6 @@
 {
-    "type": "module"
-  }
+    "type": "module",
+    "dependencies": {
+        "smoothscroll-polyfill": "^0.4.4"
+    }
+}
