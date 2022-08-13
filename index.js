@@ -2,11 +2,19 @@ window.addEventListener('resize', equalHeightFix);
 
 function equalHeightFix(){
   var w = document.documentElement.clientWidth;
-  if (w>992){
+  if (w>991){
   var height = this.document.getElementById("secondCol").getBoundingClientRect().height;
-  changeHeights(["firstCol", "thirdCol"], height);}
+  changeHeights(["firstCol", "thirdCol"], height);
+  document.getElementById("ViewMoreProjects").classList.add("uk-hidden");
+  document.getElementById("ViewMoreProjectsTop").classList.remove("uk-hidden");
+  document.getElementById("ViewMoreExperiencesTop").classList.remove("uk-hidden");
+  document.getElementById("ViewMoreParticipationsTop").classList.remove("uk-hidden");}
   else{
     changeHeights(["firstCol", "thirdCol"], "auto");
+    document.getElementById("ViewMoreProjects").classList.remove("uk-hidden");
+    document.getElementById("ViewMoreProjectsTop").classList.add("uk-hidden");
+    document.getElementById("ViewMoreExperiencesTop").classList.add("uk-hidden");
+    document.getElementById("ViewMoreParticipationsTop").classList.add("uk-hidden");
   }
 }
 

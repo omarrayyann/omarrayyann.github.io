@@ -112,3 +112,8 @@ a {
   position: relative;
   top: -3px;
 }
+
+
+#card {
+  border-radius: 0px;
+}
