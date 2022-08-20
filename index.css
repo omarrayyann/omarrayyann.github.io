@@ -77,8 +77,8 @@ a {
   width: 24px;
   height: 24px;
   margin-left: -12px;
-  border-left: 1px solid #a5a5a5;
-  border-bottom: 1px solid #a5a5a5;
+  border-left: 1px solid #707070;
+  border-bottom: 1px solid #707070;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   -webkit-animation: sdb04 2s infinite;
@@ -115,5 +115,5 @@ a {
 
 
 #card {
-  border-radius: 0px;
+  border-radius: 10px;
 }
