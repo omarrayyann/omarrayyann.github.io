@@ -48,8 +48,31 @@ a {
   #longNav {
     display: none;
   }
+
   #shortNav {
     display: block;
+  }
+}
+
+#titleWidth{
+  padding-left: 0px;
+}
+
+#title {
+  font-size: revert;
+}
+
+@media (max-width: 474px) {
+
+  #title {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 398px) {
+
+  #titleWidth {
+    padding-left: 20px;
   }
 }
 
