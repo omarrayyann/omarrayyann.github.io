@@ -15,7 +15,7 @@
 </script>
 
 
-<title>BFS - Omar Rayyan</title>
+<title>DFS - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,7 +80,7 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Breadth First Search</h1>
+        <h2 style="margin-bottom: 10px">Depth First Search</h1>
         <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
         <p uk-margin style="margin-bottom: 10px">
           <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
@@ -94,11 +94,10 @@
        
         
         <p uk-margin style="text-align: justify">
-          A graph traversal algorithm that starts traversing the graph from a specified source vertex and explores all the vertices at the current level before moving on to the next level. 
-
+          A graph traversal algorithm that explores as far as possible along each branch before backtracking. The algorithm starts at a specified source vertex and explores its neighbors recursively, marking each visited vertex as visited to avoid revisiting them.
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">O(m+n)</b>, where m is the number of edges and n is the number of vertices
+           <b style="color: black ;">O(m+n)</b>, where m is the number of edges and n is the number of vertices
         </p>  
       
 
@@ -108,30 +107,29 @@
 
           </div>
           <pre class='brush: cpp '>
+            vector&ltbool&gt visited;
+            int current_time = 0;
 
-            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
+            void DFS(vector&ltvector&ltint&gt&gt & graph, int vertix) {
+              current_time++;
               if (visited.empty()) {
                 visited.resize(graph.size(), false);
               }
-
-              queue  &ltint&gt queue;
-              queue.push(vertix);
             
-              while (!queue.empty()) {
-                int current_vertix = queue.front();
-                queue.pop();
-                visited.at(current_vertix) = true;
+              visited.at(vertix) = true;
             
-                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
-            
-                  if (!visited.at(graph.at(current_vertix).at(i))) {
-                    queue.push(graph.at(current_vertix).at(i));
-                    visited.at(graph.at(current_vertix).at(i)) = true;
-                  }
+              for (int i = 0; i &ltgraph.at(vertix).size(); i++) {
+                if (!visited.at(graph.at(vertix).at(i))) {
+                  DFS(graph, graph.at(vertix).at(i));
                 }
-                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
               }
-            }        
+            
+              current_time++;
+            
+              cout &lt&lt "Finished the Discovery of Vertix (" &lt&lt vertix &lt&lt ")";
+              // Comment the line below if the time of discovery was not important
+              cout &lt&lt " at time (" &lt&lt current_time &lt&lt ")" &lt&lt endl;
+            }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
