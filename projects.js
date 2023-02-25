@@ -9,7 +9,7 @@ function equalHeightFix(){
         changeHeights(rowNumber, height);
     }}
     else{
-        for (let rowNumber = 1; rowNumber<4; rowNumber++){
+        for (let rowNumber = 1; rowNumber<6; rowNumber++){
             changeHeights(rowNumber, "auto");
         } 
     }
