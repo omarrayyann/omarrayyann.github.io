@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Detecting an Odd Cycle - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../src/logo_omar.png">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="index.html">Home</a></li>
+                    <li class="uk-active"><a href="projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Detecting an Odd Cycle</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+          This algorithm checks whether an undirected graph contains an odd-length cycle by performing a BFS (Breadth-First Search) traversal from each unvisited vertex. It uses a coloring array to keep track of the vertices and their colors during the traversal. Initially, all vertices are uncolored (-1). When a vertex is visited, it is colored with either 0 or 1.        </p>  
+        <p uk-margin style="text-align: justify">
+           <b style="color: black ;">O(m+n)</b>, where m is the number of edges and n is the number of vertices
+        </p>  
+      
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            bool oddCycle(vector&ltvector&ltin&gt&gt & graph) {
+              vector &ltint&gt coloringArray;
+              coloringArray.resize(graph.size(), -1);
+            
+              for (int j = 0; j &ltgraph.size(); j++) {
+                if (coloringArray[j] == -1) {
+
+                  coloringArray.at(j) = 1;
+                  queue &ltint&gt queue;
+                  queue.push(j);
+
+                  while (!queue.empty()) {
+
+                    int currentVertix = queue.front();
+                    queue.pop();
+                    
+                    if (graph.at(currentVertix).at(currentVertix) == 1) {
+                      return true;
+                    }
+                    for (int i = 0; i&ltgraph.size(); i++) {
+                      if (graph.at(currentVertix).at(i)) {
+                        if (coloringArray[i] == -1) {
+
+                          coloringArray[i] = 1 - coloringArray[currentVertix];
+                          queue.push(i);
+                          
+                        } else if (coloringArray[i] == coloringArray[currentVertix]) {
+                          return true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              return false;
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
