@@ -3,7 +3,9 @@
 <head>
     
 <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -16,13 +18,16 @@
 <title>KATIB - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
+
 <link rel="stylesheet" href="../index.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 <script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
-
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -33,10 +38,10 @@
           <div class="uk-navbar-center">
 
               <ul class="uk-navbar-nav uk-flex-center">
-                <li class="uk-parent"><a href="index.html">Home</a></li>
-                <li class="uk-active"><a href="projects.html">Projects</a></li>
-                <li class="uk-parent"><a href="experience.html">Experience</a></li>
-                <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
                 
                 
               </ul>
@@ -68,7 +73,7 @@
 
 
 <div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
-<div class="uk-container uk-container-medium">
+<div class="uk-container uk-container-small">
 
         <div class="uk-heading-divider" style="margin-bottom: 0px">
         <table>
@@ -77,26 +82,67 @@
         <td>
         <h2 style="margin-bottom: 10px">Breadth First Search</h1>
         <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
-        <p uk-margin>
-            <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
-        </p>  
         
+       
     </td>
     </tr>
         </table> 
         </div>
        
+        
+        <p uk-margin style="text-align: justify">
+          A graph traversal algorithm that starts traversing the graph from a specified source vertex and explores all the vertices at the current level before moving on to the next level. 
 
+        </p>  
+        <p uk-margin style="text-align: justify">
+           <b style="color: black ;">O(M+N)</b>, where M is the number of edges and N is the number of vertices
+        </p>  
       
 
 
-        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 30px">
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
 
-        
+
+          </div>
+          <pre class='brush: cpp '>
+
+            void BFS(vector < vector < int >> & graph, int vertix) {
+              if (visited.empty()) {
+                visited.resize(graph.size(), false);
+              }
+            
+              queue < int > queue;
+              queue.push(vertix);
+            
+              while (!queue.empty()) {
+                int current_vertix = queue.front();
+                queue.pop();
+                visited.at(current_vertix) = true;
+            
+                for (int i = 0; i < graph.at(current_vertix).size(); i++) {
+            
+                  if (!visited.at(graph.at(current_vertix).at(i))) {
+                    queue.push(graph.at(current_vertix).at(i));
+                    visited.at(graph.at(current_vertix).at(i)) = true;
+                  }
+                }
+            
+                cout << "Finished the Discovery of Vertix (" << current_vertix << ")" << endl;
+              }
+            }        
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+            
 
 </div>
 </div>
-
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
 
 
 </body>
