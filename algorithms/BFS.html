@@ -15,7 +15,7 @@
 </script>
 
 
-<title>KATIB - Omar Rayyan</title>
+<title>BFS - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -109,12 +109,12 @@
           </div>
           <pre class='brush: cpp '>
 
-            void BFS(vector < vector < int >> & graph, int vertix) {
+            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
               if (visited.empty()) {
                 visited.resize(graph.size(), false);
               }
-            
-              queue < int > queue;
+
+              queue  &ltint&gt queue;
               queue.push(vertix);
             
               while (!queue.empty()) {
@@ -122,15 +122,14 @@
                 queue.pop();
                 visited.at(current_vertix) = true;
             
-                for (int i = 0; i < graph.at(current_vertix).size(); i++) {
+                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
             
                   if (!visited.at(graph.at(current_vertix).at(i))) {
                     queue.push(graph.at(current_vertix).at(i));
                     visited.at(graph.at(current_vertix).at(i)) = true;
                   }
                 }
-            
-                cout << "Finished the Discovery of Vertix (" << current_vertix << ")" << endl;
+                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
               }
             }        
           </pre>
