@@ -15,7 +15,7 @@
 </script>
 
 
-<title>Strongly Connected Components - Omar Rayyan</title>
+<title>Merge Sort - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px"> StronglyConnected Components in an Directed Graph</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <h2 style="margin-bottom: 10px">Merge Sort</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Sorting</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Number-of-Connected-Components.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Merge_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,10 +94,11 @@
        
         
         <p uk-margin style="text-align: justify">
-          X
+          A sorting algorithm that utilizes a divide-and-conquer approach to sorting an array of elements. It works by dividing the input array into smaller sub-arrays, sorting each sub-array recursively, and then merging the sorted sub-arrays back together into a single sorted array.
+
         </p>  
         <p uk-margin style="text-align: justify">
-           <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+          <b style="color: black ;">Time Complexity: O(nlogn)</b>
         </p>  
       
 
@@ -107,7 +108,60 @@
 
           </div>
           <pre class='brush: cpp '>
-           
+void merge(vector&ltint&gt &arr, int from, int to, int middle)
+{
+
+    vector&ltint&gt newArray;
+    int currentFrom = from;
+    int currentTo = middle + 1;
+
+    while (currentFrom &lt= middle && currentTo &lt= to)
+    {
+        if (arr.at(currentTo) &lt arr.at(currentFrom))
+        {
+            newArray.push_back(arr.at(currentTo));
+            currentTo++;
+        }
+        else
+        {
+            newArray.push_back(arr.at(currentFrom));
+            currentFrom++;
+        }
+    }
+
+    while (currentFrom &lt= middle)
+    {
+        newArray.push_back(arr.at(currentFrom));
+        currentFrom++;
+    }
+
+    while (currentTo &lt= to)
+    {
+        newArray.push_back(arr.at(currentTo));
+        currentTo++;
+    }
+
+    int index = from;
+
+    for (int i = 0; i &lt newArray.size(); i++)
+    {
+        arr.at(index) = newArray.at(i);
+
+        index++;
+    }
+}
+
+void merge_sort(vector&ltint&gt &arr, int from, int to)
+{
+    if (from &lt to)
+    {
+        int middle = (from + to) / 2;
+        merge_sort(arr, from, middle);
+        merge_sort(arr, middle + 1, to);
+        merge(arr, from, to, middle);
+    }
+}
+
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">

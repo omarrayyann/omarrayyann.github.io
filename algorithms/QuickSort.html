@@ -15,7 +15,7 @@
 </script>
 
 
-<title>Strongly Connected Components - Omar Rayyan</title>
+<title>QuickSort - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px"> StronglyConnected Components in an Directed Graph</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <h2 style="margin-bottom: 10px">Quick Sort</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Sorting</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Number-of-Connected-Components.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Quick_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,12 +94,12 @@
        
         
         <p uk-margin style="text-align: justify">
-          X
+          A sorting algorithm that follows the divide-and-conquer approach. It selects a pivot element from the array and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The algorithm then recursively sorts the sub-arrays. 
+
         </p>  
         <p uk-margin style="text-align: justify">
-           <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+          <b style="color: black ;">Time Complexity: O(n^2) but O(nlogn) on average</b>
         </p>  
-      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -107,7 +107,52 @@
 
           </div>
           <pre class='brush: cpp '>
-           
+            int partition(vector&ltint&gt &arr, int from, int to)
+            {
+            
+                int pi = from;
+                int pivot_value = arr[to];
+            
+                for (int i = from; i &lt to; i++)
+                {
+            
+                    if (arr[i] &lt pivot_value)
+                    {
+                        int temp = arr[pi];
+                        arr[pi] = arr[i];
+                        arr[i] = temp;
+                        pi++;
+                    }
+                }
+            
+                int temp = arr[to];
+                arr[to] = arr[pi];
+                arr[pi] = temp;
+            
+                return pi;
+            }
+            
+            void quick_sort(vector&ltint&gt &arr, int from, int to)
+            {
+                if (from &lt to)
+                {
+                    int pivot_position = partition(arr, from, to);
+                    quick_sort(arr, from, pivot_position - 1);
+                    quick_sort(arr, pivot_position + 1, to);
+                }
+            }
+            
+            int main()
+            {
+                vector&ltint&gt testingArray = {6, 3, 5, 2, 1, 4};
+            
+                quick_sort(testingArray, 0, testingArray.size() - 1);
+            
+                for (int i = 0; i &lt testingArray.size(); i++)
+                {
+                    cout &lt&lt testingArray.at(i) &lt&lt " ";
+                }
+            }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
