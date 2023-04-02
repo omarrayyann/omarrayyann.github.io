@@ -15,7 +15,7 @@
 </script>
 
 
-<title>BFS - Omar Rayyan</title>
+<title>Finding Cycles - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Breadth First Search</h1>
+        <h2 style="margin-bottom: 10px">Finding Cycles in an Undirected Graphs (using DFS)</h1>
         <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Quick_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,13 +94,11 @@
        
         
         <p uk-margin style="text-align: justify">
-          A graph traversal algorithm that starts traversing the graph from a specified source vertex and explores all the vertices at the current level before moving on to the next level. 
-
+          Using Depth-First Search algorithm to traverse the graph and detect cycles. The graph is represented as an adjacency list, where each node is a vector of integers representing its neighbors. The algorithm starts at node 0 and keeps track of the visited nodes and their parent nodes. If it encounters a node that has already been partially visited, it means that a cycle has been detected. The algorithm then backtracks from the current node to its parent nodes to form the cycle and stores it in a vector of cycles. Finally, the program prints out all the cycles found in the graph.
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+          <b style="color: black ;">Time Complexity: O(n+m)</b>
         </p>  
-      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -108,30 +106,67 @@
 
           </div>
           <pre class='brush: cpp '>
+            vector&ltvector&ltint&gt cycles;
 
-            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
-              if (visited.empty()) {
-                visited.resize(graph.size(), false);
-              }
-
-              queue&ltint&gt queue;
-              queue.push(vertix);
-              visited.at(current_vertix) = true;
-
-              while (!queue.empty()) {
-                int current_vertix = queue.front();
-                queue.pop();
-            
-                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
-            
-                  if (!visited.at(graph.at(current_vertix).at(i))) {
-                    queue.push(graph.at(current_vertix).at(i));
-                    visited.at(graph.at(current_vertix).at(i)) = true;
+              void DFS_Cycles_Finder(vector&ltvector&ltint&gt &graph, vector&ltint&gt &visited, vector&ltint&gt &parents, int node, int p)
+              {
+                  // visited status 0: unvisited
+                  // visited status 1: partially visited
+                  // visited status 2: fully visited
+              
+                  if (visited.at(node) == 0)
+                  {
+                      parents.at(node) = p;
+                      visited.at(node) = 1;
+                      for (auto neighbor : graph.at(node))
+                      {
+                          if (neighbor != parents.at(node))
+                          {
+                              DFS_Cycles_Finder(graph, visited, parents, neighbor, node);
+                          }
+                      }
+                      visited.at(node) = 2;
                   }
-                }
-                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
+                  else if (visited.at(node) == 1)
+                  {
+                      vector&ltint&gt newCycle;
+                      int currentNode = p;
+                      newCycle.push_back(currentNode);
+                      while (currentNode != node)
+                      {
+                          currentNode = parents.at(currentNode);
+                          newCycle.push_back(currentNode);
+                      }
+                      cycles.push_back(newCycle);
+                  }
               }
-            }        
+              
+              int main()
+              {
+                  vector&ltvector&ltint&gt&gt graph = {
+                      {1, 2},
+                      {0, 3},
+                      {0, 3},
+                      {1, 2, 4},
+                      {3, 5, 6},
+                      {4, 6},
+                      {4, 5}};
+                  vector&ltint&gt visited;
+                  visited.resize(graph.size(), 0);
+                  vector&ltint&gt parents;
+                  parents.resize(graph.size(), -1);
+              
+                  DFS_Cycles_Finder(graph, visited, parents, 0, 0);
+              
+                  for (int i = 0; i &lt cycles.size(); i++)
+                  {
+                      for (int j = 0; j &lt cycles.at(i).size(); j++)
+                      {
+                          cout &lt&lt cycles.at(i).at(j) &lt&lt " ";
+                      }
+                      cout &lt&lt endl;
+                  }
+              }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">

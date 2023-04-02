@@ -15,7 +15,7 @@
 </script>
 
 
-<title>BFS - Omar Rayyan</title>
+<title>QuickSort - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Breadth First Search</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <h2 style="margin-bottom: 10px">Dijkstra</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Sorting</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Quick_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,13 +94,12 @@
        
         
         <p uk-margin style="text-align: justify">
-          A graph traversal algorithm that starts traversing the graph from a specified source vertex and explores all the vertices at the current level before moving on to the next level. 
+          A shortest path algorithm used to find the shortest path between two nodes in a graph. It works by maintaining a priority queue of unvisited nodes and their tentative distances from a source node. Starting from the source node, it visits the neighboring nodes and updates their tentative distances if a shorter path is found. This process is repeated until all nodes have been visited.
 
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+          <b style="color: black ;">Time Complexity: O((n+m)log(n))</b> with prioirty queues, <b style="color: black ;">O(n&#178)</b> without
         </p>  
-      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -108,30 +107,47 @@
 
           </div>
           <pre class='brush: cpp '>
-
-            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
-              if (visited.empty()) {
-                visited.resize(graph.size(), false);
-              }
-
-              queue&ltint&gt queue;
-              queue.push(vertix);
-              visited.at(current_vertix) = true;
-
-              while (!queue.empty()) {
-                int current_vertix = queue.front();
-                queue.pop();
-            
-                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
-            
-                  if (!visited.at(graph.at(current_vertix).at(i))) {
-                    queue.push(graph.at(current_vertix).at(i));
-                    visited.at(graph.at(current_vertix).at(i)) = true;
+            int getMinimumUnvisited(vector&ltbool&gt &visited, vector&ltint&gt &distances)
+              {
+              
+                  int minimumIndex = 0;
+                  int minDistance = INT_MAX;
+              
+                  for (int i = 0; i $lt distances.size(); i++)
+                  {
+                      if (distances.at(i) &lt minDistance && !visited.at(i))
+                      {
+                          minimumIndex = i;
+                          minDistance = distances.at(i);
+                      }
                   }
-                }
-                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
+                  return minimumIndex;
               }
-            }        
+              
+              vector&ltint&gt dijkstra(vector&ltvector&ltint&gt&gt &graph, int starting)
+              {
+              
+                  vector&ltbool&gt visited;
+                  visited.resize(graph.size(), false);
+                  vector&ltint&gt distances;
+                  distances.resize(graph.size(), INT_MAX);
+                  distances.at(starting) = 0;
+              
+                  for (int i = 0; i &lt graph.size(); i++)
+                  {
+                      int current = getMinimumUnvisited(visited, distances);
+                      visited.at(current) = true;
+                      for (int j = 0; j &lt graph.at(0).size(); j++)
+                      {
+                          if (graph.at(i).at(j) != 0 && !visited.at(j))
+                          {
+                              distances.at(j) = min(distances.at(j), distances.at(i) + graph.at(i).at(j));
+                          }
+                      }
+                  }
+              
+                  return distances;
+              }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">

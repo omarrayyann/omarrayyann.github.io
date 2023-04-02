@@ -15,7 +15,7 @@
 </script>
 
 
-<title>BFS - Omar Rayyan</title>
+<title>Bubble Sort - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Breadth First Search</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <h2 style="margin-bottom: 10px">Bubble Sort</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Sorting</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Bubble_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,13 +94,11 @@
        
         
         <p uk-margin style="text-align: justify">
-          A graph traversal algorithm that starts traversing the graph from a specified source vertex and explores all the vertices at the current level before moving on to the next level. 
-
+          A sorting algorithm that works by repeatedly swapping adjacent elements in a list until they are in the correct order. It gets its name from the way smaller elements "bubble" to the top of the list during each pass.
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+          <b style="color: black ;">Time Complexity: O(n&#178)</b>
         </p>  
-      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -108,30 +106,21 @@
 
           </div>
           <pre class='brush: cpp '>
-
-            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
-              if (visited.empty()) {
-                visited.resize(graph.size(), false);
-              }
-
-              queue&ltint&gt queue;
-              queue.push(vertix);
-              visited.at(current_vertix) = true;
-
-              while (!queue.empty()) {
-                int current_vertix = queue.front();
-                queue.pop();
-            
-                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
-            
-                  if (!visited.at(graph.at(current_vertix).at(i))) {
-                    queue.push(graph.at(current_vertix).at(i));
-                    visited.at(graph.at(current_vertix).at(i)) = true;
-                  }
+              void bubble_sort(vector&ltint&gt &array)
+                {
+                    for (int i = 0; i &lt array.size() - 1; i++)
+                    {
+                        for (int j = 0; j &lt array.size() - 1; j++)
+                        {
+                            if (array.at(j) &gt array.at(j + 1))
+                            {
+                                int temp = array.at(j);
+                                array.at(j) = array.at(j + 1);
+                                array.at(j + 1) = temp;
+                            }
+                        }
+                    }
                 }
-                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
-              }
-            }        
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
