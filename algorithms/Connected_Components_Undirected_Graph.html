@@ -15,7 +15,7 @@
 </script>
 
 
-<title>Edit Distance - Omar Rayyan</title>
+<title>Connected Components - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Edit Distance</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Dynamic Programming</p>
+        <h2 style="margin-bottom: 10px">Connected Components - Undirected Graph</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/edit_distance.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Connected_Components_Undirected_Graph.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,16 +94,12 @@
        
         
         <p uk-margin style="text-align: justify">
-          This algorithm calculates the minimum edit distance between two strings, represented by a and b. The algorithm uses dynamic programming to recursively solve the problem by breaking it down into smaller subproblems.
-                </p>  
-        <p uk-margin style="text-align: justify">
-           <b style="color: black ;">Time Complexity: O()</b>, where m is the number of edges and n is the number of vertices
-
+          This algorithm finds the connected components of an undirected graph using depth-first search (DFS) traversal. The resulting vector of components is then printed out, along with the number of components found.
         </p>  
         <p uk-margin style="text-align: justify">
-
-        <b style="color: black ;">Space Complexity: O(mn)</b>, where m is the number of characters in the first string and and n is the number of characters in the second string
-          </p>
+          <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+        </p>  
+      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -111,53 +107,78 @@
 
           </div>
           <pre class='brush: cpp '>
-            unordered_map&ltstring, int&gt cost;
-
-            int minimumEditDistance(string a, string b)
+           
+            vector&ltbool&gt visited;
+            vector&ltint&gt finish_times;
+            vector&ltvector&ltint&gt&gt components = {};
+            
+            void find_connected_components(vector&ltvector&ltint&gt&gt &graph)
             {
+                visited.resize(graph.size(), false);
             
-                if (cost.find(a + "-" + b) != cost.end())
+                for (int i = 0; i &lt graph.size(); i++)
                 {
-                    return cost.find(a + "-" + b)-&gtsecond;
-                }
-            
-                if (a == "" || b == "")
-                {
-                    int ans = max(b.length(), a.length());
-                    string key = a + "-" + b;
-                    cost[key] = ans;
-                    return ans;
-                }
-                else
-                {
-                    // replacing
-                    int replacingCost = 0;
-                    if (a[a.length() - 1] == b[b.length() - 1])
+                    if (!visited.at(i))
                     {
-                        replacingCost = minimumEditDistance(a.substr(0, a.length() - 1), b.substr(0, b.length() - 1));
+                        components.push_back({});
+                        DFS(graph, i);
                     }
-                    else
-                    {
-                        replacingCost = minimumEditDistance(a.substr(0, a.length() - 1), b.substr(0, b.length() - 1)) + 1;
-                    }
-            
-                    // inserting
-                    int insertingCost = 0;
-                    insertingCost = minimumEditDistance(a, b.substr(0, b.length() - 1)) + 1;
-            
-                    // deleting
-                    int deletingCost = 0;
-                    deletingCost = minimumEditDistance(a.substr(0, a.length() - 1), b) + 1;
-            
-                    int ans = min(replacingCost, deletingCost);
-                    ans = min(ans, insertingCost);
-            
-                    string key = a + "-" + b;
-                    cost[key] = ans;
-                    return ans;
                 }
             }
-
+            
+            void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix)
+            {
+            
+                if (!visited.empty())
+                {
+                    visited.resize(graph.size(), false);
+                }
+            
+                visited.at(vertix) = true;
+                components.at(components.size() - 1).push_back(vertix);
+            
+                for (int i = 0; i &lt graph.at(vertix).size(); i++)
+                {
+            
+                    if (!visited.at(graph.at(vertix).at(i)))
+                    {
+                        DFS(graph, graph.at(vertix).at(i));
+                    }
+                }
+            }
+            
+            // Example Run
+            int main()
+            {
+            
+                //  Sample Adjecency Listx
+                vector&ltvector&ltint&gt&gt graph = {
+                    {1, 2, 3},
+                    {0, 2, 3},
+                    {0, 1, 3},
+                    {0, 1, 2},
+                    {5},
+                    {4},
+                    {7, 8},
+                    {6, 8},
+                    {6, 7},
+                };
+                // Sample Run
+            
+                find_connected_components(graph);
+            
+                cout &lt&lt "Number of Components: " &lt&lt components.size() &lt&lt endl;
+            
+                for (int i = 0; i &lt components.size(); i++)
+                {
+                    cout &lt&lt "Component " &lt&lt i + 1 &lt&lt ": " &lt&lt endl;
+                    for (int j = 0; j &lt components.at(i).size(); j++)
+                    {
+                        cout &lt&lt components.at(i).at(j) &lt&lt " ";
+                    }
+                    cout &lt&lt endl;
+                }
+            }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">

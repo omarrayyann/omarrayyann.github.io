@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Strongly Connected Components - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../src/logo_omar.png">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="index.html">Home</a></li>
+                    <li class="uk-active"><a href="projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Kosaraju's Algorithm - Strongly Connected Components</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Kosaraju.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+          This algorithm finds the strongly connected components of a directed graph. It first reverses the direction of all edges in the graph and performs a DFS traversal on the reversed graph to obtain a stack of vertices in order of decreasing finishing time. It then performs a second DFS traversal on the original graph, starting from each vertex in the stack that has not yet been visited, to identify the strongly connected components. The resulting vector of components is then printed out, along with the number of components found.
+        </p>  
+        <p uk-margin style="text-align: justify">
+           <b style="color: black ;">Time Complexity: O(m+n)</b>, where m is the number of edges and n is the number of vertices
+        </p>  
+      
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix);
+
+                vector&ltbool&gt visited;
+                stack&ltint&gt finished;
+                vector&ltvector&ltint&gt&gt components = {{}};
+                
+                void kosaraju(vector&ltvector&ltint&gt &graph)
+                {
+                
+                    // 1. Reverse the Graph
+                    vector&ltvector&ltint&gt&gt reversed_graph;
+                    reversed_graph.resize(graph.size());
+                    for (int i = 0; i &lt graph.size(); i++)
+                    {
+                        for (int j = 0; j &lt graph.at(i).size(); j++)
+                        {
+                            reversed_graph.at(graph.at(i).at(j)).push_back(i);
+                        }
+                    }
+                
+                    // 2. DFS on the Reversed Graph
+                    visited.clear();
+                    visited.resize(reversed_graph.size(), false);
+                    for (int i = 0; i &lt reversed_graph.size(); i++)
+                    {
+                        if (!visited.at(i))
+                        {
+                            DFS(reversed_graph, i);
+                        }
+                    }
+                
+                    // 3. DFS on the Nodes with decreasing order of finishing time
+                    visited.clear();
+                    visited.resize(reversed_graph.size(), false);
+                    components.clear();
+                    stack&ltint&gt finished_temp = finished;
+                    while (!finished_temp.empty())
+                    {
+                        int currentNode = finished_temp.top();
+                        finished_temp.pop();
+                        if (!visited.at(currentNode))
+                        {
+                            components.push_back({});
+                            DFS(graph, currentNode);
+                        }
+                    }
+                }
+                
+                void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix)
+                {
+                
+                    visited.at(vertix) = true;
+                    components.at(components.size() - 1).push_back(vertix);
+                    for (int i = 0; i &lt graph.at(vertix).size(); i++)
+                    {
+                        if (!visited.at(graph.at(vertix).at(i)))
+                        {
+                            DFS(graph, graph.at(vertix).at(i));
+                        }
+                    }
+                
+                    finished.push(vertix);
+                }
+                
+                // Example Run
+                int main()
+                {
+                
+                    //  Sample Adjecency List
+                    vector&ltvector&ltint&gt&gt graph = {
+                        {2, 3},
+                        {0},
+                        {1},
+                        {4},
+                        {5},
+                        {3}};
+                
+                    // Sample Run
+                    kosaraju(graph);
+                    cout &lt&lt "Number of Components: " &lt&lt components.size() &lt&lt endl;
+                
+                    for (int i = 0; i &lt components.size(); i++)
+                    {
+                        cout &lt&lt "Component " &lt&lt i + 1 &lt&lt ": " &lt&lt endl;
+                        for (int j = 0; j &lt components.at(i).size(); j++)
+                        {
+                            cout &lt&lt components.at(i).at(j) &lt&lt " ";
+                        }
+                        cout &lt endl;
+                    }
+                }                
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>

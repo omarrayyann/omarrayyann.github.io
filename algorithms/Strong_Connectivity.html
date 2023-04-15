@@ -15,7 +15,7 @@
 </script>
 
 
-<title>Edit Distance - Omar Rayyan</title>
+<title>Merge Sort - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Edit Distance</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Dynamic Programming</p>
+        <h2 style="margin-bottom: 10px">Strong Connectivity</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/edit_distance.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Strong-Connectivity.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,16 +94,12 @@
        
         
         <p uk-margin style="text-align: justify">
-          This algorithm calculates the minimum edit distance between two strings, represented by a and b. The algorithm uses dynamic programming to recursively solve the problem by breaking it down into smaller subproblems.
-                </p>  
-        <p uk-margin style="text-align: justify">
-           <b style="color: black ;">Time Complexity: O()</b>, where m is the number of edges and n is the number of vertices
-
+          The strong connectivity algorithm is used to determine if a directed graph is strongly connected. A directed graph is said to be strongly connected if there exists a directed path between every pair of vertices. The algorithm works by first performing a depth-first search (DFS) on the given graph to check if all nodes are visited. If not, the graph is not strongly connected and the algorithm returns false. Then, the algorithm constructs the reverse graph by reversing the direction of all edges and performs another DFS on the reverse graph to check if all nodes are visited. If not, the reverse graph is not strongly connected, and the algorithm returns false. If both the normal and reverse graph DFS visits all nodes, then the graph is strongly connected, and the algorithm returns true.
         </p>  
         <p uk-margin style="text-align: justify">
-
-        <b style="color: black ;">Space Complexity: O(mn)</b>, where m is the number of characters in the first string and and n is the number of characters in the second string
-          </p>
+          <b style="color: black ;">Time Complexity: O(n+m)</b>
+        </p>  
+      
 
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
@@ -111,52 +107,51 @@
 
           </div>
           <pre class='brush: cpp '>
-            unordered_map&ltstring, int&gt cost;
-
-            int minimumEditDistance(string a, string b)
-            {
-            
-                if (cost.find(a + "-" + b) != cost.end())
-                {
-                    return cost.find(a + "-" + b)-&gtsecond;
-                }
-            
-                if (a == "" || b == "")
-                {
-                    int ans = max(b.length(), a.length());
-                    string key = a + "-" + b;
-                    cost[key] = ans;
-                    return ans;
-                }
-                else
-                {
-                    // replacing
-                    int replacingCost = 0;
-                    if (a[a.length() - 1] == b[b.length() - 1])
-                    {
-                        replacingCost = minimumEditDistance(a.substr(0, a.length() - 1), b.substr(0, b.length() - 1));
-                    }
-                    else
-                    {
-                        replacingCost = minimumEditDistance(a.substr(0, a.length() - 1), b.substr(0, b.length() - 1)) + 1;
-                    }
-            
-                    // inserting
-                    int insertingCost = 0;
-                    insertingCost = minimumEditDistance(a, b.substr(0, b.length() - 1)) + 1;
-            
-                    // deleting
-                    int deletingCost = 0;
-                    deletingCost = minimumEditDistance(a.substr(0, a.length() - 1), b) + 1;
-            
-                    int ans = min(replacingCost, deletingCost);
-                    ans = min(ans, insertingCost);
-            
-                    string key = a + "-" + b;
-                    cost[key] = ans;
-                    return ans;
-                }
-            }
+            bool strong_connectivity(vector&ltvector&ltint&gt&gt graph)
+              {
+              
+                  // Checking if the Normal Graph DFS visits all nodes
+              
+                  DFS(graph, 0);
+              
+                  for (int i = 0; i &lt visited.size(); i++)
+                  {
+                      if (!visited.at(i))
+                      {
+                          return false;
+                      }
+                  }
+              
+                  // Checking if the Reversed Graph DFS visits all nodes
+              
+                  // Forming the Reverse Graph
+                  vector&ltvector&ltint&gt&gt reverse_graph;
+              
+                  reverse_graph.resize(graph.size());
+                  for (int i = 0; i &lt graph.size(); i++)
+                  {
+                      int from = i;
+                      for (auto to : graph.at(from))
+                      {
+                          reverse_graph.at(to).push_back(from);
+                      }
+                  }
+              
+                  for (int i = 0; i &lt visited.size(); i++)
+                  {
+                      visited.at(i) = false;
+                  }
+                  DFS(reverse_graph, 0);
+                  for (int i = 0; i &lt visited.size(); i++)
+                  {
+                      if (!visited.at(i))
+                      {
+                          return false;
+                      }
+                  }
+              
+                  return true;
+              }
 
           </pre>
 
