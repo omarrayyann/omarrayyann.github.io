@@ -15,7 +15,7 @@
 </script>
 
 
-<title>QuickSort - Omar Rayyan</title>
+<title>Bellman Ford - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../src/logo_omar.png">
 
@@ -80,10 +80,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Dijkstra</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Sorting</p>
+        <h2 style="margin-bottom: 10px">Bellman Ford</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Dynamic Programming</p>
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Algorithms/blob/main/Quick_Sort.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/bellman_ford.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -94,11 +94,10 @@
        
         
         <p uk-margin style="text-align: justify">
-          A shortest path algorithm used to find the shortest path between two nodes in a graph. It works by maintaining a priority queue of unvisited nodes and their tentative distances from a source node. Starting from the source node, it visits the neighboring nodes and updates their tentative distances if a shorter path is found. This process is repeated until all nodes have been visited. (Note: It only works for non-negative weights)
-
+          A shortest path algorithm used to find the shortest path between two nodes in a graph. It works by maintaining a priority queue of unvisited nodes and their tentative distances from a source node. Starting from the source node, it visits the neighboring nodes and updates their tentative distances if a shorter path is found. This process is repeated until all nodes have been visited. (Note: It can work for any graph (can have negative weights) as long as it does not have a negative weight cycle)
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexity: O((n+m)log(n))</b> with prioirty queues, <b style="color: black ;">O(n&#178)</b> without
+          <b style="color: black ;">Time Complexity: O(mn)</b> 
         </p>  
 
 
@@ -107,47 +106,66 @@
 
           </div>
           <pre class='brush: cpp '>
-            int getMinimumUnvisited(vector&ltbool&gt &visited, vector&ltint&gt &distances)
-              {
-              
-                  int minimumIndex = 0;
-                  int minDistance = INT_MAX;
-              
-                  for (int i = 0; i $lt distances.size(); i++)
-                  {
-                      if (distances.at(i) &lt minDistance && !visited.at(i))
-                      {
-                          minimumIndex = i;
-                          minDistance = distances.at(i);
-                      }
-                  }
-                  return minimumIndex;
-              }
-              
-              vector&ltint&gt dijkstra(vector&ltvector&ltint&gt&gt &graph, int starting)
-              {
-              
-                  vector&ltbool&gt visited;
-                  visited.resize(graph.size(), false);
-                  vector&ltint&gt distances;
-                  distances.resize(graph.size(), INT_MAX);
-                  distances.at(starting) = 0;
-              
-                  for (int i = 0; i &lt graph.size(); i++)
-                  {
-                      int current = getMinimumUnvisited(visited, distances);
-                      visited.at(current) = true;
-                      for (int j = 0; j &lt graph.at(0).size(); j++)
-                      {
-                          if (graph.at(i).at(j) != 0 && !visited.at(j))
-                          {
-                              distances.at(j) = min(distances.at(j), distances.at(i) + graph.at(i).at(j));
-                          }
-                      }
-                  }
-              
-                  return distances;
-              }
+            // {From, To}, Cost
+            typedef pair&ltvector&ltint&gt, int&gt edge;
+
+            vector&ltint&gt bellman_ford(vector&ltvector&ltint&gt&gt &graph, int starting)
+            {
+
+                vector&ltint&gt distances;
+                distances.resize(graph.size(), INT_MAX);
+                distances.at(starting) = 0;
+
+                vector&ltvector&ltint&gt&gt edges;
+
+                for (int i = 0; i &lt graph.size(); i++)
+                {
+                    for (int j = 0; j &lt graph.at(0).size(); j++)
+                    {
+                        if (graph.at(i).at(j) != 0)
+                        {
+                            edges.push_back({i, j});
+                        }
+                    }
+                }
+
+                // Relaxing the edges until no changes occur in an iteration (m-1) in the worst case
+                for (int i = 0; i &lt graph.size(); i++)
+                {
+                    bool change = false;
+                    for (auto edge : edges)
+                    {
+                        int from = edge[0];
+                        int to = edge[1];
+                        int weight = graph.at(from).at(to);
+                        if (distances[from] != INT_MAX && distances[from] + weight &lt distances[to])
+                        {
+                            distances[to] = distances[from] + weight;
+                            change = true;
+                        }
+                    }
+                    if (!change)
+                    {
+                        break;
+                    }
+                }
+
+                return distances;
+            }
+
+            int main()
+            {
+
+                vector&ltvector&ltint&gt&gt graph = {
+                    {0, 1, 0, 2, 0}, {0, 0, 2, 0, 0}, {0, 0, 0, 0, 8}, {0, 0, 0, 0, 3}, {0, 0, 0, 0, 0}};
+
+                vector&ltint&gt ans = bellman_ford(graph, 0);
+
+                for (int i = 0; i &lt ans.size(); i++)
+                {
+                    cout &lt&lt i &lt&lt ": " &lt&lt ans.at(i) &lt&lt endl;
+                }
+            }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">

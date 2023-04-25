@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>MST - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../src/logo_omar.png">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="index.html">Home</a></li>
+                    <li class="uk-active"><a href="projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Minimum Spanning Tree (Kruskal's Algorithm)</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="http://github.com/omarrayyann/Algorithms/blob/main/MST_Kruskal.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+          Kruskal's algorithm is a greedy algorithm used to find the minimum spanning tree of a connected, weighted graph. The minimum spanning tree is a subset of the edges of the graph that connects all the vertices together with the minimum possible total edge weight. Kruskal's algorithm works by first sorting the edges in the graph by weight, and then adding the edges to the tree one by one in ascending order of weight, as long as they do not form a cycle. To prevent cycles, a disjoint set data structure is used to keep track of which nodes are in the same connected component.        </p>  
+        <p uk-margin style="text-align: justify">
+          <b style="color: black ;">Time Complexity: O(mlogn)</b>
+        </p>  
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            // {From, To}, Weight
+            typedef pair&ltvector&ltint&gt, int&gt edge;
+            
+            struct edgeSorting
+            {
+                constexpr bool operator()(
+                    pair&ltvector&ltint&gt, int&gt const &a,
+                    pair&ltvector&ltint&gt, int&gt const &b)
+                    const noexcept
+                {
+                    return a.second &gt b.second;
+                }
+            };
+            
+            class DisjointSet
+            {
+                unordered_map&ltint, int&gt parent;
+                unordered_map&ltint, int&gt rank;
+            
+            public:
+                void makeSet(int setSize)
+                {
+            
+                    for (int i = 0; i &lt setSize; i++)
+                    {
+                        parent[i] = i;
+                        rank[i] = 0;
+                    }
+                }
+                int find(int node)
+                {
+                    if (parent[node] == node)
+                    {
+                        return node;
+                    }
+                    else
+                    {
+                        return find(parent[node]);
+                    }
+                }
+            
+                void unionSets(int nodeA, int nodeB)
+                {
+            
+                    int aParent = find(nodeA);
+                    int bParent = find(nodeB);
+            
+                    int aRank = rank[nodeA];
+                    int bRank = rank[nodeB];
+            
+                    if (aRank == bRank)
+                    {
+                        parent[bParent] = aParent;
+                        rank[aParent] += 1;
+                    }
+                    else if (aRank &gt bRank)
+                    {
+                        parent[bParent] = aParent;
+                    }
+                    else
+                    {
+                        parent[aParent] = bParent;
+                    }
+                }
+            };
+            
+            vector&ltvector&ltint&gt&gt minimumSpanningTree(vector&ltvector&ltint&gt&gt graph)
+            {
+            
+                // Edges in MST
+                vector&ltvector&ltint&gt&gt MST_Edges;
+                vector&ltvector&ltint&gt&gt MST_Graph;
+            
+                // Sorted Edges
+                priority_queue&ltedge, vector&ltedge&gt, edgeSorting&gt edgesPQ;
+                // Extracting the edges in the graph
+                for (int from = 0; from &lt graph.size(); from++)
+                {
+                    for (int to = 0; to &lt graph.at(from).size(); to++)
+                    {
+                        int cost = graph.at(from).at(to);
+                        if (cost)
+                        {
+                            vector&ltint&gt edgeNodes = {from, to};
+                            edgesPQ.push(make_pair(edgeNodes, cost));
+                        }
+                    }
+                }
+            
+                // Making the disjointSet Structure
+                DisjointSet disjointSet;
+                disjointSet.makeSet(graph.size());
+                // Looping through the edges from lightest to heaviest
+                while (!edgesPQ.empty())
+                {
+                    vector&ltint&gt edgeNodes = edgesPQ.top().first;
+                    edgesPQ.pop();
+                    int from = edgeNodes.at(0);
+                    int to = edgeNodes.at(1);
+            
+                    // If they happen to be in different trees
+                    if (disjointSet.find(from) != disjointSet.find(to))
+                    {
+                        disjointSet.unionSets(from, to);
+                        MST_Edges.push_back(edgeNodes);
+                    }
+                }
+            
+                MST_Graph.resize(graph.size());
+                for (auto edge : MST_Edges)
+                {
+                    MST_Graph.at(edge.at(0)).push_back(edge.at(1));
+                    MST_Graph.at(edge.at(1)).push_back(edge.at(0));
+                }
+            
+                return MST_Graph;
+            }
+            
+            int main()
+            {
+                // Adjacency Matrix
+                vector&ltvector&ltint&gt&gt graph = {
+                    {0, 2, 4, 0, 0, 0},
+                    {2, 0, 2, 4, 2, 0},
+                    {4, 2, 0, 0, 3, 0},
+                    {0, 4, 0, 0, 3, 2},
+                    {0, 2, 3, 3, 0, 2},
+                    {0, 0, 0, 2, 2, 0},
+                };
+            
+                vector&ltvector&ltint&gt&gt MST_Graph = minimumSpanningTree(graph);
+                cout &lt&lt "MST Includes: " &lt&lt endl;
+                for (int i = 0; i &lt MST_Graph.size(); i++)
+                {
+                    for (auto edge : MST_Graph.at(i))
+                    {
+                        cout &lt&lt "(" &lt&lt i &lt&lt ", " &lt&lt edge &lt&lt ")" &lt&lt endl;
+                    }
+                }
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
