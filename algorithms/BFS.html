@@ -81,7 +81,7 @@
          
         <td>
         <h2 style="margin-bottom: 10px">Breadth First Search</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Graphs</p>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p>
         <p uk-margin style="margin-bottom: 10px">
           <a href="https://github.com/omarrayyann/Algorithms/blob/main/Breadth-First-Search%20(BFS).cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
@@ -109,29 +109,50 @@
           </div>
           <pre class='brush: cpp '>
 
-            void BFS(vector &ltvector&ltint&gt&gt& graph, int vertix) {
-              if (visited.empty()) {
-                visited.resize(graph.size(), false);
-              }
-
-              queue&ltint&gt queue;
-              queue.push(vertix);
-              visited.at(current_vertix) = true;
-
-              while (!queue.empty()) {
-                int current_vertix = queue.front();
-                queue.pop();
-            
-                for (int i = 0; i &ltgraph.at(current_vertix).size(); i++) {
-            
-                  if (!visited.at(graph.at(current_vertix).at(i))) {
-                    queue.push(graph.at(current_vertix).at(i));
-                    visited.at(graph.at(current_vertix).at(i)) = true;
+            void BFS(vector&ltvector&ltint&gt&gt &graph, int vertix)
+              {
+                  if (visited.empty())
+                  {
+                      visited.resize(graph.size(), false);
                   }
-                }
-                cout  &lt&lt"Finished the Discovery of Vertix (" &lt&lt current_vertix  &lt&lt ")" &lt&lt endl;
+              
+                  queue&ltint&gt queue;
+                  queue.push(vertix);
+                  visited.at(vertix) = true;
+              
+                  while (!queue.empty())
+                  {
+                      int current_vertix = queue.front();
+                      queue.pop();
+              
+                      for (int i = 0; i &lt graph.at(current_vertix).size(); i++)
+                      {
+              
+                          if (!visited.at(graph.at(current_vertix).at(i)))
+                          {
+                              queue.push(graph.at(current_vertix).at(i));
+                              visited.at(graph.at(current_vertix).at(i)) = true;
+                          }
+                      }
+              
+                      cout &lt "Finished the Discovery of Vertix (" &lt current_vertix &lt ")" &lt endl;
+                  }
               }
-            }        
+              
+              // Example Run
+              int main()
+              {
+                  //  Sample Adjecency List
+                  vector&ltvector&ltint&gt&gt graph = {
+                      {1, 2},
+                      {0, 2, 3},
+                      {0, 1},
+                      {1}};
+              
+                  // Sample Run
+                  BFS(graph, 0);
+              }
+
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
