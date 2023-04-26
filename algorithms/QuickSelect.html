@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Quick Select - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../src/logo_omar.png">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="index.html">Home</a></li>
+                    <li class="uk-active"><a href="projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Quick Select</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Divide and Conqure</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/quick_select.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+          This algorithm is used to find the kth smallest element in an unsorted array. It uses the Median of Medians algorithm to select a pivot element that is guaranteed to be close to the true median of the array, which improves the worst-case time complexity of Quickselect to O(n). The algorithm partitions the array around the pivot element and recursively searches the subarray that contains the kth smallest element. This algorithm can be used to efficently find the median.
+        </p>  
+        <p uk-margin style="text-align: justify">
+          <b style="color: black ;">Time Complexity: O(n&#178)</b>
+        </p>  
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            int partition(vector&ltint&gt &arr, int from, int to, int value)
+            {
+                for (int i = from; i &lt= to; i++)
+                {
+                    if (arr.at(i) == value)
+                    {
+                        int temp = arr.at(to);
+                        arr.at(to) = arr.at(i);
+                        arr.at(i) = temp;
+                        break;
+                    }
+                }
+
+                int pi = from;
+                int pivot_value = arr[to];
+
+                for (int i = from; i &lt to; i++)
+                {
+
+                    if (arr[i] &lt= pivot_value)
+                    {
+                        int temp = arr[pi];
+                        arr[pi] = arr[i];
+                        arr[i] = temp;
+                        pi++;
+                    }
+                }
+
+                int temp = arr[to];
+                arr[to] = arr[pi];
+                arr[pi] = temp;
+                return pi - from;
+            }
+
+            int find_median(vector&ltint&gt &array, int from, int size)
+            {
+                sort(array.begin() + from, array.begin() + from + size);
+                int median = array.at(from + size / 2);
+                return median;
+            }
+
+            int quick_select(vector&ltint&gt &array, int from, int to, int k)
+            {
+                int number_of_elements = to - from + 1;
+                if (k &lt number_of_elements)
+                {
+                    // Sorting every 5 elements and storing their median
+                    vector&ltint&gt medians;
+                    for (int i = 0; i &lt number_of_elements / 5; i++)
+                    {
+                        int median = find_median(array, from + 5 * i, 5);
+                        medians.push_back(median);
+                    }
+                    // Last Group
+                    if (number_of_elements % 5)
+                    {
+                        int median = find_median(array, from + 5 * (number_of_elements / 5), number_of_elements % 5);
+                        medians.push_back(median);
+                    }
+
+                    // Median of Medians
+                    int median_of_medians;
+                    if (medians.size() == 1)
+                    {
+                        median_of_medians = medians.at(0);
+                    }
+                    else
+                    {
+                        median_of_medians = quick_select(medians, 0, medians.size() - 1, medians.size() / 2);
+                    }
+
+                    // Partition at the median of medians
+                    int partition_index = partition(array, from, to, median_of_medians);
+
+                    if (k == partition_index)
+                    {
+                        return median_of_medians;
+                    }
+                    else if (k &lt partition_index)
+                    {
+                        return quick_select(array, from, partition_index + from - 1, k);
+                    }
+                    else
+                    {
+                        return quick_select(array, partition_index + 1, to, from + k - (partition_index + 1));
+                    }
+                }
+                return INT_MAX;
+            }
+
+            int main()
+            {
+                vector&ltint&gt array = {5, 6, 2, 4, 5, 2, 4, 5};
+                int nthNeeded = 3;
+                cout &lt&lt quick_select(array, 0, array.size() - 1, nthNeeded) &lt&lt endl;
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>

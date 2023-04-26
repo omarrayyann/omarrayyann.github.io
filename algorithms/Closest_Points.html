@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Closest Points - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../src/logo_omar.png">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="index.html">Home</a></li>
+                    <li class="uk-active"><a href="projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Closest Points</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Divide and Conqure</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Algorithms/blob/main/closest_points.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+          This algorithm finds the closest pair of points in a set of 2D points using a divide-and-conquer approach. It recursively splits the set of points into two halves and finds the closest pairs in each half. It then looks for the closest pair that crosses the boundary between the two halves. This is done by sorting the points by their y-coordinates, and only considering pairs of points that are within a certain distance of the boundary. The algorithm returns the closest pair of points and their distance. 
+
+
+        </p>  
+        <p uk-margin style="text-align: justify">
+          <b style="color: black ;">Time Complexity: O(nlog&#178n)</b>. It can be made to run in O(nlogn) if a different sorting strategy is used to prevent repetitive sorting.
+        </p>  
+      
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            float distance(vector&ltfloat&gt p1, vector&ltfloat&gt p2)
+            {
+                float deltaX = p1[0] - p2[0];
+                float deltaY = p1[1] - p2[1];
+                return sqrtf(deltaX * deltaX + deltaY * deltaY);
+            }
+            
+            // To be used in the base case
+            vector&ltvector&ltfloat&gt&gt brute_force(vector&ltvector&ltfloat&gt&gt points, int from, int to)
+            {
+                float minDistance = FLT_MAX;
+                vector&ltvector&ltfloat&gt&gt closest_points;
+                vector&ltfloat&gt minPoint;
+                for (int i = from; i &lt to; i++)
+                {
+                    for (int j = i + 1; j &lt= to; j++)
+                    {
+                        if (distance(points.at(i), points.at(j)) &lt minDistance)
+                        {
+                            minDistance = distance(points.at(i), points.at(j));
+                            closest_points.clear();
+                            closest_points = {points.at(i), points.at(j)};
+                        }
+                    }
+                }
+            
+                return closest_points;
+            }
+            
+            vector&ltvector&ltfloat&gt&gt closest_split_pair(vector&ltvector&ltfloat&gt&gt &points, float distance_from_split, int from, int to)
+            {
+            
+                // Sorted Points
+                vector&ltvector&ltfloat&gt&gt xSortedPoints(points.begin() + from, points.begin() + to + 1);
+                vector&ltvector&ltfloat&gt&gt ySortedPoints(points.begin() + from, points.begin() + to + 1);
+                sort(xSortedPoints.begin(), xSortedPoints.end(),
+                     [](const std::vector&ltfloat&gt &a, const std::vector&ltfloat&gt &b)
+                     {
+                         return a[0] &lt b[0];
+                     });
+                sort(ySortedPoints.begin(), ySortedPoints.end(),
+                     [](const std::vector&ltfloat&gt &a, const std::vector&ltfloat&gt &b)
+                     {
+                         return a[1] &lt b[1];
+                     });
+            
+                // The vector&ltfloat&gt splitting the left and right parts
+                vector&ltfloat&gt boundary_point = xSortedPoints.at((from + to) / 2);
+            
+                // Getting the points within the bar of width "distance_from_split" from each end
+                vector&ltvector&ltfloat&gt&gt sortedY_bar;
+                for (auto edge : ySortedPoints)
+                {
+                    if ((edge[0] &lt= boundary_point[0] + distance_from_split) && (edge[0] &gt= boundary_point[0] - distance_from_split))
+                    {
+                        sortedY_bar.push_back(edge);
+                    }
+                }
+            
+                // We only need to compare it with the neighboring 7 points
+                float closest_points_distance = FLT_MAX;
+                vector&ltvector&ltfloat&gt&gt closest_points;
+                for (int i = 0; i &lt sortedY_bar.size(); i++)
+                {
+                    for (int j = i + 1; j &lt sortedY_bar.size(); j++)
+                    {
+                        if (distance(sortedY_bar.at(i), sortedY_bar.at(j)) &lt closest_points_distance)
+                        {
+                            closest_points_distance = distance(sortedY_bar.at(i), sortedY_bar.at(j));
+                            closest_points.clear();
+                            closest_points = {sortedY_bar.at(i), sortedY_bar.at(j)};
+                        }
+                    }
+                }
+            
+                return closest_points;
+            }
+            vector&ltvector&ltfloat&gt&gt find_closest_points(vector&ltvector&ltfloat&gt&gt &points, int from, int to)
+            {
+            
+                int number_of_points = to - from + 1;
+            
+                if (number_of_points &lt 4)
+                {
+                    return brute_force(points, from, to);
+                }
+            
+                int middle = (from + to) / 2;
+            
+                vector&ltvector&ltfloat&gt&gt l_points = find_closest_points(points, from, middle);
+            
+                float l_distance = distance(l_points.at(0), l_points.at(1));
+                vector&ltvector&ltfloat&gt&gt r_points = find_closest_points(points, middle + 1, to);
+            
+                float r_distance = distance(r_points.at(0), r_points.at(1));
+                vector&ltvector&ltfloat&gt&gt m_points = closest_split_pair(points, min(l_distance, r_distance), from, to);
+                float m_distance = distance(m_points.at(0), m_points.at(1));
+            
+                if (l_distance &lt= r_distance)
+                {
+                    if (l_distance &lt m_distance)
+                    {
+                        return l_points;
+                    }
+                    else
+                    {
+                        return m_points;
+                    }
+                }
+                else if (r_distance &lt m_distance)
+                {
+                    return r_points;
+                }
+                else
+                {
+                    return m_points;
+                }
+            }
+            
+            int main()
+            {
+                vector&ltvector&ltfloat&gt&gt points = {
+                    {-2, 60}, {-2, 0}, {1, 8}, {3, 90}, {56, 2}, {4, 99}};
+            
+                vector&ltvector&ltfloat&gt&gt closest_points = find_closest_points(points, 0, points.size() - 1);
+            
+                cout &lt&lt "(" &lt&lt closest_points.at(0)[0] &lt&lt ", " &lt&lt closest_points.at(0)[1] &lt&lt ") and "
+                     &lt&lt "(" &lt&lt closest_points.at(1)[0] &lt&lt ", " &lt&lt closest_points.at(1)[1] &lt&lt ")" &lt&lt endl;
+                cout &lt&lt "Distance Apart: " &lt&lt distance(closest_points.at(0), closest_points.at(1)) &lt&lt endl;
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
