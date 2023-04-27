@@ -109,95 +109,95 @@
           <pre class='brush: cpp '>
             void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix);
 
-                vector&ltbool&gt visited;
-                stack&ltint&gt finished;
-                vector&ltvector&ltint&gt&gt components = {{}};
-                
-                void kosaraju(vector&ltvector&ltint&gt &graph)
+            vector&ltbool&gt visited;
+            stack&ltint&gt finished;
+            vector&ltvector&ltint&gt&gt components = {{}};
+            
+            void kosaraju(vector&ltvector&ltint&gt &graph)
+            {
+            
+                // 1. Reverse the Graph
+                vector&ltvector&ltint&gt&gt reversed_graph;
+                reversed_graph.resize(graph.size());
+                for (int i = 0; i &lt graph.size(); i++)
                 {
-                
-                    // 1. Reverse the Graph
-                    vector&ltvector&ltint&gt&gt reversed_graph;
-                    reversed_graph.resize(graph.size());
-                    for (int i = 0; i &lt graph.size(); i++)
+                    for (int j = 0; j &lt graph.at(i).size(); j++)
                     {
-                        for (int j = 0; j &lt graph.at(i).size(); j++)
-                        {
-                            reversed_graph.at(graph.at(i).at(j)).push_back(i);
-                        }
-                    }
-                
-                    // 2. DFS on the Reversed Graph
-                    visited.clear();
-                    visited.resize(reversed_graph.size(), false);
-                    for (int i = 0; i &lt reversed_graph.size(); i++)
-                    {
-                        if (!visited.at(i))
-                        {
-                            DFS(reversed_graph, i);
-                        }
-                    }
-                
-                    // 3. DFS on the Nodes with decreasing order of finishing time
-                    visited.clear();
-                    visited.resize(reversed_graph.size(), false);
-                    components.clear();
-                    stack&ltint&gt finished_temp = finished;
-                    while (!finished_temp.empty())
-                    {
-                        int currentNode = finished_temp.top();
-                        finished_temp.pop();
-                        if (!visited.at(currentNode))
-                        {
-                            components.push_back({});
-                            DFS(graph, currentNode);
-                        }
+                        reversed_graph.at(graph.at(i).at(j)).push_back(i);
                     }
                 }
-                
-                void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix)
+            
+                // 2. DFS on the Reversed Graph
+                visited.clear();
+                visited.resize(reversed_graph.size(), false);
+                for (int i = 0; i &lt reversed_graph.size(); i++)
                 {
-                
-                    visited.at(vertix) = true;
-                    components.at(components.size() - 1).push_back(vertix);
-                    for (int i = 0; i &lt graph.at(vertix).size(); i++)
+                    if (!visited.at(i))
                     {
-                        if (!visited.at(graph.at(vertix).at(i)))
-                        {
-                            DFS(graph, graph.at(vertix).at(i));
-                        }
+                        DFS(reversed_graph, i);
                     }
-                
-                    finished.push(vertix);
                 }
-                
-                // Example Run
-                int main()
+            
+                // 3. DFS on the Nodes with decreasing order of finishing time
+                visited.clear();
+                visited.resize(reversed_graph.size(), false);
+                components.clear();
+                stack&ltint&gt finished_temp = finished;
+                while (!finished_temp.empty())
                 {
-                
-                    //  Sample Adjecency List
-                    vector&ltvector&ltint&gt&gt graph = {
-                        {2, 3},
-                        {0},
-                        {1},
-                        {4},
-                        {5},
-                        {3}};
-                
-                    // Sample Run
-                    kosaraju(graph);
-                    cout &lt&lt "Number of Components: " &lt&lt components.size() &lt&lt endl;
-                
-                    for (int i = 0; i &lt components.size(); i++)
+                    int currentNode = finished_temp.top();
+                    finished_temp.pop();
+                    if (!visited.at(currentNode))
                     {
-                        cout &lt&lt "Component " &lt&lt i + 1 &lt&lt ": " &lt&lt endl;
-                        for (int j = 0; j &lt components.at(i).size(); j++)
-                        {
-                            cout &lt&lt components.at(i).at(j) &lt&lt " ";
-                        }
-                        cout &lt endl;
+                        components.push_back({});
+                        DFS(graph, currentNode);
                     }
-                }                
+                }
+            }
+            
+            void DFS(vector&ltvector&ltint&gt&gt &graph, int vertix)
+            {
+            
+                visited.at(vertix) = true;
+                components.at(components.size() - 1).push_back(vertix);
+                for (int i = 0; i &lt graph.at(vertix).size(); i++)
+                {
+                    if (!visited.at(graph.at(vertix).at(i)))
+                    {
+                        DFS(graph, graph.at(vertix).at(i));
+                    }
+                }
+            
+                finished.push(vertix);
+            }
+            
+            // Example Run
+            int main()
+            {
+            
+                //  Sample Adjecency List
+                vector&ltvector&ltint&gt&gt graph = {
+                    {2, 3},
+                    {0},
+                    {1},
+                    {4},
+                    {5},
+                    {3}};
+            
+                // Sample Run
+                kosaraju(graph);
+                cout &lt&lt "Number of Components: " &lt&lt components.size() &lt&lt endl;
+            
+                for (int i = 0; i &lt components.size(); i++)
+                {
+                    cout &lt&lt "Component " &lt&lt i + 1 &lt&lt ": " &lt&lt endl;
+                    for (int j = 0; j &lt components.at(i).size(); j++)
+                    {
+                        cout &lt&lt components.at(i).at(j) &lt&lt " ";
+                    }
+                    cout &lt endl;
+                }
+            }                
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
