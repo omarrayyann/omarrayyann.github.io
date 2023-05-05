@@ -98,7 +98,7 @@
           This algorithm finds the maximum flow in a network. The network is represented by a graph with nodes and edges, where each edge has a capacity indicating the maximum amount of flow it can carry. The algorithm starts with an initial flow of zero and repeatedly finds an augmenting path from the source node to the sink node, which is a path that can increase the flow from the source to the sink. The algorithm then increases the flow along this path by the maximum amount possible (which is determined by the capacity of the bottleneck edge), and updates the residual graph (which represents the remaining capacity on each edge) accordingly. 
         </p>  
         <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexity: O(mn(m+n))</b> where f is the maximum flow returned
+          <b style="color: black ;">Time Complexity: O(fn)</b> where f is the maximum flow returned and n is the number of edges
         </p>  
 
 
