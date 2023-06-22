@@ -11,12 +11,12 @@ code {
 
 @font-face {
   font-family: "HelveticaNeue-Light";
-  src: url(src/HelveticaNeue\ Light.ttf) format("truetype");
+  src: url(HelveticaNeue\ Light.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url(src/HelveticaNeueLt.ttf) format("truetype");
+  src: url(HelveticaNeueLt.ttf) format("truetype");
 }
 
 
@@ -47,6 +47,19 @@ a {
 {
     all:unset;
 }
+
+
+@font-face {
+  font-family: "Gotham";
+  src: url(Gotham-Font/GothamMedium_1.ttf) format("truetype");
+}
+
+/*Google logo colors*/
+.g-blue{ color:#4285F4; }
+.o-red{ color:#DB4437; }
+.o-yellow{ color:#F4B400; }
+.l-green{ color:#0F9D58; }
+.e-red { display:inline-block; }
 
 @media (max-width: 430px) {
   #longNav {
