@@ -3052,7 +3052,7 @@ select.uk-form-width-xsmall {
   color: #fff;
   vertical-align: middle;
   white-space: nowrap;
-  border-radius: 2px;
+  border-radius: 4px;
   text-transform: uppercase;
 }
 /* Color modifiers
@@ -3063,6 +3063,21 @@ select.uk-form-width-xsmall {
 .uk-label-success {
   background-color: #32d296;
   color: #fff;
+}
+/*
+/* Custom
+ * Projects Tags
+ */
+ .uk-label-tag {
+  background-color: rgb(255, 255, 255);
+  /* font-size: 0.775rem; */
+  color: #000;
+  border-color: #cac9c9;
+  border-width: 0.5px;
+  margin-right: 5px;
+  border-style: solid;
+  text-transform: none;
+  margin-top: 5px;
 }
 /*
  * Warning
