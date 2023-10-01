@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Single Linked List - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Single Linked List</h1>
+        <!-- <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p> -->
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Data-Structures/blob/main/SingleLinkedList.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+            A data structure consisting of nodes, where each node contains two components: data and a reference (or link) to the next node in the sequence. This structure allows for efficient insertion and deletion of elements at the beginning or end of the list, but accessing elements in the middle may require traversing the list from the beginning.
+        </p>  
+        <p uk-margin style="text-align: justify">
+          <b style="color: black ;">Time Complexities:</b>
+          <ul>
+            <li><b style="color: black ;">Insertion at Start:</b> O(1) </li>
+            <li><b style="color: black ;">Insertion at End:</b> O(n) </li>
+            <li><b style="color: black ;">Deletion at Start:</b> O(1) </li>
+            <li><b style="color: black ;">Deletion at End:</b> O(n) </li>
+            <li><b style="color: black ;">Deletion by Index:</b> O(n) </li>
+            <li><b style="color: black ;">Random Access:</b> O(n) </li>
+
+          </ul>
+        </p>  
+      
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+
+class Node
+{
+private:
+    int elem;   // data element
+    Node *next; // Link (pointer) to the next Node
+
+public:
+    Node(int elem) : elem(elem), next(NULL)
+    {
+    }
+    friend class MyLinkedList;
+};
+
+class MyLinkedList
+{
+private:
+    Node *head; // pointer to the head of list
+    int length = 0;
+
+public:
+    MyLinkedList();           // empty list constructor
+    ~MyLinkedList();          // destructor to clean up all nodes
+    bool empty() const;       // is list empty?
+    void addFront(int elem);  // add a new Node at the front of the list
+    void removeFront();       // remove front Node from the list
+    int getIndexOf(int elem); // returns first index of an element in the list, -1 if the element is not present
+    void display() const;
+    void loadData(string);       // read a file and load it into the linked list
+    void dumpData(string) const; // write the linked list to a file
+    void sort();                 // sort the elements of the list
+};
+
+// constructor
+MyLinkedList::MyLinkedList()
+{
+    this-&gthead = NULL;
+}
+//====================================
+// destructor to clean up all nodes
+MyLinkedList::~MyLinkedList()
+{
+    while (!empty())
+    {
+        this-&gtremoveFront();
+    }
+}
+//====================================
+// Check if the list is empty or not
+bool MyLinkedList::empty() const
+{
+    if (this-&gthead == NULL)
+    {
+        return true;
+    }
+    return false;
+}
+//====================================
+// add a node at the front of the list
+void MyLinkedList::addFront(int elem)
+{
+    Node *newNode = new Node(elem);
+    newNode-&gtnext = head;
+    head = newNode;
+    length++;
+}
+//====================================
+// remove the first node from the list
+void MyLinkedList::removeFront()
+
+{
+    if (!empty())
+    {
+        Node *temp = head;
+        head = head-&gtnext;
+        length--;
+        delete temp;
+    }
+}
+//==============================================
+// get first index of an element in the the list.
+// returns -1 if the element is not present
+int MyLinkedList::getIndexOf(int elem)
+{
+    Node *tempHead = head;
+    int index = 0;
+    if (tempHead != NULL)
+    {
+        if (tempHead-&gtelem == elem)
+        {
+            return index;
+        }
+        index++;
+        while (tempHead-&gtnext != NULL)
+        {
+            tempHead = tempHead-&gtnext;
+            if (tempHead-&gtelem == elem)
+            {
+                return index;
+            }
+            index++;
+        }
+    }
+    return -1;
+}
+//==============================================
+// display all nodes of the linked list
+void MyLinkedList::display() const
+{
+    Node *temp = head;
+    cout &lt&lt "Head";
+    if (temp != NULL)
+    {
+        cout &lt&lt "-&gt" &lt&lt temp-&gtelem;
+    }
+    while (temp != NULL && temp-&gtnext != NULL)
+    {
+        temp = temp-&gtnext;
+        cout &lt&lt "-&gt" &lt&lt temp-&gtelem;
+    }
+
+    cout &lt&lt "-&gt"
+         &lt&lt "Null" &lt&lt endl;
+}
+//====================================
+// sort the elments of the list using bubble_sort
+void MyLinkedList::sort()
+{
+    for (int i = 0; i &lt length - 1; i++)
+    {
+        Node *temp = head;
+        for (int j = length; j &gt 1; j--)
+        {
+            if (temp-&gtelem &gt temp-&gtnext-&gtelem)
+            {
+                int tempElement = temp-&gtelem;
+                temp-&gtelem = temp-&gtnext-&gtelem;
+                temp-&gtnext-&gtelem = tempElement;
+            }
+            temp = temp-&gtnext;
+        }
+    }
+}
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
