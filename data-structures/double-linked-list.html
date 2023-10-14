@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Double Linked List - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Double Linked List</h1>
+        <!-- <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p> -->
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Data-Structures/blob/main/DoubleLinkedList.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+            A data structure consisting of nodes, where each node contains two components: data and a reference (or link) to the next node in the sequence. This structure allows for efficient insertion and deletion of elements at the beginning or end of the list, but accessing elements in the middle may require traversing the list from the beginning.
+        </p>  
+        <p uk-margin style="text-align: justify">
+          <b style="color: black ;">Time Complexities:</b>
+          <ul>
+            <li><b style="color: black ;">Insertion at Start:</b> O(1) </li>
+            <li><b style="color: black ;">Insertion at End:</b> O(1) </li>
+            <li><b style="color: black ;">Deletion at Start:</b> O(1) </li>
+            <li><b style="color: black ;">Deletion at End:</b> O(1) </li>
+            <li><b style="color: black ;">Deletion by Index:</b> O(n) </li>
+            <li><b style="color: black ;">Random Access:</b> O(n) </li>
+
+          </ul>
+        </p>  
+      
+
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+
+            #include &ltiostream&gt
+            #include &ltstring&gt
+            #include &ltsstream&gt
+            #include &ltiomanip&gt
+            #include &ltexception&gt
+            using namespace std;
+            
+            class Node
+            {
+            private:
+                string elem; // data element (type string in this case)
+                Node *next;  // Link (pointer) to the next Node
+                Node *prev;  // Link (pointer) to the previous Node
+                friend class DoublyLinkedList;
+            
+            public:
+                Node() : next(NULL), prev(NULL)
+                {
+                }
+                Node(string elem) : elem(elem), next(NULL), prev(NULL)
+                {
+                }
+            };
+            //==============================================================
+            class DoublyLinkedList
+            {
+            private:
+                Node *head; // pointer to the head of List
+                Node *tail; // pointer to the tail of List
+            public:
+                DoublyLinkedList();                            // constructor to create dummy head and tail nodes
+                ~DoublyLinkedList();                           // destructor to clean up all nodes
+                bool empty() const;                            // return true if the list is empty
+                const string &front() const;                   // return the element from the first valid Node of list, throw an exception if the list is empty
+                const string &back() const;                    // get the value (element) from last valid Node of the list, throw an exception if the list is empty
+                void addBefore(Node *ptr, const string &elem); // add a new node before a node pointed by ptr
+                void addFront(const string &elem);             // add a new node to the front of list (after head)
+                void addBack(const string &elem);              // add a new node to the back of the list (before tail)
+                void removeFront();                            // remove front node from list, throw an exception if the list is empty
+                void removeBack();                             // remove last node from list, throw an exception if the list is empty
+                void display() const;                          // display all element of the list
+            };
+            //============================================================
+            DoublyLinkedList::DoublyLinkedList()
+            {
+            
+                this-&gthead = new Node();
+                this-&gttail = new Node();
+                this-&gthead-&gtnext = tail;
+                this-&gttail-&gtprev = head;
+            }
+            //============================================================
+            DoublyLinkedList::~DoublyLinkedList() // destructor to clean up all nodes
+            {
+            
+                while (!empty())
+                {
+                    this-&gtremoveFront();
+                }
+            
+                delete head;
+                delete tail;
+            }
+            //============================================================
+            bool DoublyLinkedList::empty() const // is list empty?
+            {
+            
+                if (this-&gthead-&gtnext == this-&gttail)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            //============================================================
+            const string &DoublyLinkedList::front() const // get front element
+            {
+                if (!empty())
+                {
+                    return this-&gthead-&gtnext-&gtelem;
+                }
+                else
+                {
+                    throw(runtime_error("List is Empty..!"));
+                }
+            }
+            //============================================================
+            const string &DoublyLinkedList::back() const // get front element
+            {
+                if (!empty())
+                {
+                    return this-&gttail-&gtprev-&gtelem;
+                }
+                else
+                {
+                    throw(runtime_error("List is Empty..!"));
+                }
+            }
+            //============================================================
+            void DoublyLinkedList::addBefore(Node *ptr, const string &elem)
+            {
+            
+                Node *newNode = new Node();
+                newNode-&gtelem = elem;
+                newNode-&gtnext = ptr;
+            
+                if (ptr-&gtprev != NULL)
+                {
+                    Node *temp = ptr-&gtprev;
+                    temp-&gtnext = newNode;
+                    ptr-&gtprev = newNode;
+                    newNode-&gtprev = temp;
+                }
+                else
+                {
+                    ptr-&gtprev = newNode;
+                }
+            }
+            //============================================================
+            void DoublyLinkedList::addFront(const string &elem) // add to front of list
+            {
+                if (elem != "")
+                {
+                    Node *newNode = new Node();
+                    newNode-&gtelem = elem;
+                    newNode-&gtprev = head;
+                    Node *temp = head-&gtnext;
+                    head-&gtnext = newNode;
+                    newNode-&gtnext = temp;
+                    temp-&gtprev = newNode;
+                }
+                else
+                {
+                    cout &lt&lt "No value inputted" &lt&lt endl;
+                }
+            }
+            //============================================================
+            void DoublyLinkedList::addBack(const string &elem) // add to Back of the list
+            {
+                addBefore(tail, elem);
+            }
+            //============================================================
+            void DoublyLinkedList::removeFront() // remove front item from list
+            {
+                if (!empty())
+                {
+                    Node *temp = this-&gthead-&gtnext;
+                    this-&gthead-&gtnext-&gtnext-&gtprev = this-&gthead;
+                    this-&gthead-&gtnext = this-&gthead-&gtnext-&gtnext;
+                    delete temp;
+                }
+                else
+                {
+                    throw(runtime_error("List is Empty..!"));
+                }
+            }
+            //============================================================
+            void DoublyLinkedList::removeBack() // remove last item from list
+            {
+                if (!empty())
+                {
+                    Node *temp = this-&gttail-&gtprev;
+                    this-&gttail-&gtprev-&gtprev-&gtnext = this-&gttail;
+                    this-&gttail-&gtprev = this-&gttail-&gtprev-&gtprev;
+                    delete temp;
+                }
+                else
+                {
+                    throw(runtime_error("List is Empty..!"));
+                }
+            }
+            //============================================================
+            void DoublyLinkedList::display() const
+            {
+                Node *curr = head;
+                while (curr != NULL)
+                {
+                    cout &lt&lt "+------";
+                    curr = curr-&gtnext;
+                }
+                cout &lt&lt "+" &lt&lt endl
+                     &lt&lt "|";
+                curr = head;
+                while (curr != NULL)
+                {
+                    if (curr == head)
+                        cout &lt&lt " Head |";
+                    else if (curr == tail)
+                        cout &lt&lt " Tail |";
+                    else
+                        cout &lt&lt setw(5) &lt&lt curr-&gtelem &lt&lt " |";
+            
+                    curr = curr-&gtnext;
+                }
+                curr = head;
+                cout &lt&lt endl;
+                while (curr != NULL)
+                {
+                    cout &lt&lt "+------";
+                    curr = curr-&gtnext;
+                }
+                cout &lt&lt "+" &lt&lt endl;
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
