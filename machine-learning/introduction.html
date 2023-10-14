@@ -105,52 +105,98 @@
           <li><b class="uk-text-secondary">Optimizing the Loss Function:</b> Optimization techniques, such as gradient descent, are used to adjust the model's parameters to reduce the loss and improve the model's accuracy and performance.</li>
         </ul>
 
-        <span class="uk-text-secondary" style="font-weight: bold;">Recurring Equations</span> to know:
-
-        <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">SSE (Sum of Squared Errors) </span> \( = \sum_{i=1}^{n} \left(y_i - y'_i\right)^2  \)
-
-        <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">SSE (Sum of Squared Errors) </span>  \( = \sum_{i=1}^{n} (y_i - \bar{y'}_i)^2  \)
-
-        <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">SSE (Sum of Squared Errors) </span>  \( = \sum_{i=1}^{n} (y_i - \bar{y})^2  \)
-
-        <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">MSE (Mean of Squared Errors) </span> \( = \frac{1}{n}\sum_{i=1}^{n} \left(y_i - y'_i\right)^2  \)
+        <span class="uk-text-secondary" style="font-weight: bold;">General Equations</span> to know:
 
         
         <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">\( \sigma_x^2 \text{ (Variance of X)} \) </span> \( = \frac{1}{n}\displaystyle\sum_{i=1}^{n}(x_i - \bar{x_i})^2  \)
 
-
-    
-        <br>
-        <br>
-        
-        <span class="uk-text-secondary" style="font-weight: bold;">\( \sigma_y^2 \text{ (Variance of Y)} \) </span> \( = \frac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \bar{y_i})^2  \)
-
-
+        <table class="uk-table uk-table-responsive uk-table-divider" style="padding-top: 0px; margin-top: 15px;">
+          <thead>
+            <tr>
+              <th class="uk-width-small" style="text-transform: uppercase;">Symbol</th>
+              <th class="uk-width-small" style="text-transform: uppercase;">Description</th>
+              <th class="uk-width-small" style="text-transform: uppercase;">Equation</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>
+                    SSE
+                    </td>
+                    <td>Sum of Squared Errors
+                  </td>
+                  <td>\(\sum_{i=1}^{n} \left(y_i - y'_i\right)^2  \)</td>
+              </tr>
+              <tr>
+                <td>
+                  SSR </td>
+                  <td> Sum of Squared Regression
+                </td>
+                <td> \( \sum_{i=1}^{n} (y'_i - \bar{y'}_i)^2  \)</td>
+            </tr>
+            <tr>
+              <td>
+                SST </td>
+                <td> Sum of Squared Total
+              </td>
+              <td> \( \sum_{i=1}^{n} (y_i - \bar{y})^2  \)</td>
+          </tr>
+          <tr>
+            <td>
+              MSE </td>
+              <td> Mean Square Error
+            </td>
+            <td> \( \frac{1}{n}\sum_{i=1}^{n} \left(y_i - y'_i\right)^2  \)</td>
+        </tr>
 
             
-        <br>
-        <br>
+      <tr>
+        <td>
+          \( \sigma_x^2 \) </td>
+          <td> Variance of X
+        </td>
+        <td> \( \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x_i})^2  \)</td>
+    </tr>
+
+    <tr>
+      <td>
+        \( \sigma_y^2 \) </td>
+        <td> Variance of Y
+      </td>
+      <td> \( \frac{1}{n}\sum_{i=1}^{n}y_i - \bar{y_i})^2  \)</td>
+  </tr>
+
+  <tr>
+    <td>
+      \( \sigma_{xy} \) </td>
+      <td> Co-Variance of X & Y
+    </td>
+    <td> \( \frac{1}{n}\sum_{i=1}^{n}(y_i - \bar{y_i})(x_i - \bar{x_i})  \)</td>
+</tr>
+
+<tr>
+  <td>
+    r </td>
+    <td> Correlation
+  </td>
+  <td> \(\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}  \)</td>
+</tr>
+<tr>
+  <td>
+    \(R^2\) </td>
+    <td> R-Squared
+  </td>
+  <td> \(\frac{SST}{SSR} = 1 - \frac{SSE}{SSR} = 1 - \frac{MSE}{\sigma_y^2}  \)</td>
+</tr>
         
-        <span class="uk-text-secondary" style="font-weight: bold;">\( \sigma_{xy} \text{ (Covariance of X Y)} \) </span> \( = \frac{1}{n}\displaystyle\sum_{i=1}^{n}(x_i - \bar{x_i})(y_i - \bar{y_i}) \)
-
-
-
-
+          
+              
+          </tbody>
+      </table>
+        
+       
+    
+        
       
 
 
