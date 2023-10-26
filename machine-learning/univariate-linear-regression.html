@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+<script>
+
+    function resizeIframe(obj) {
+  
+      obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  
+    }
+  
+  </script>
+
+
+<title>Introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Introduction to Machine Learning</h2>
+
+        <!-- <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p> -->
+       
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        <h3 style="margin-bottom: 10px; margin-top: 30px;">Univariate Linear Regression</h3>
+
+        <p uk-margin style="text-align: justify">
+            Univariate linear regression is a statistical technique used for modeling the relationship between a <span class="uk-text-secondary" style="font-weight: bold;">single</span> independent variable \(x\) and a dependent variable \(y\). In this approach, we aim to find a linear equation that best represents the relationship between the two variables.
+        </p>
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        </div>
+        <p><span class="uk-text-secondary" style="font-weight: bold;">1. Prediction Equation:</span></p>
+    <p>\(y = \beta_0 + \beta_1x\)</p>
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    </div>
+    <p><span class="uk-text-secondary" style="font-weight: bold;">2. Loss Function:</span></p>
+    <p>\(L(\beta_0,\beta_1) = \frac{1}{n}\sum_{i=1}^n (y_i - (\beta_0 + \beta_1x_i))^2\) <br><br>(Note: This loss function is referred to as L2 loss function and uses the MSE to measure the model's accuracy.)</p>
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    </div>
+    <p><span class="uk-text-secondary" style="font-weight: bold;">3. Optimizing the Loss Function:</span></p>
+
+    <p>We can minimize \(L(\beta_0,\beta_1)\) by taking partial derivatives with respect to \(\beta_0\) and \(\beta_1\), and setting them to zero.</p>
+
+    <p>Partial derivative with respect to \(\beta_0\):</p>
+    <p>\(\frac{\partial L}{\partial \beta_0} = -\frac{2}{n}\sum_{i=1}^n (y_i - (\beta_0 + \beta_1x_i)) = 0\)</p>
+
+
+<p>Multiply both sides by \(-\frac{n}{2}\) to simplify:</p>
+
+<p>\(\sum_{i=1}^n (y_i - (\beta_0 + \beta_1x_i)) = 0\)</p>
+
+<p>Isolate \(\beta_0\):</p>
+
+<p>\(\beta_0 = \bar{y} - \frac{\beta_1}{n}\sum_{i=1}^n x_i\)</p>
+
+
+    <mark style="padding-top: 8px; padding-bottom: 8px">
+
+       \(  \beta_0 = \bar{y} - \beta_1\bar{x} \)
+    </mark>
+
+    <p>Substitute \(\beta_0 = \bar{y} - \beta_1\bar{x}\) into the loss function to make it in terms of  \(\beta_1\) only:</p>
+
+<p>\(L(\beta_0, \beta_1) = \frac{1}{n}\sum_{i=1}^n (y_i - (\beta_0 + \beta_1x_i))^2\)</p>
+<p>\(L(\beta_1) = \frac{1}{n}\sum_{i=1}^n \left(y_i - \left(\bar{y} - \beta_1\bar{x} + \beta_1x_i\right)\right)^2\)</p>
+
+<p>Partial derivative with respect to \(\beta_1\):</p>
+<p>\(\frac{\partial L}{\partial \beta_1} = -\frac{2}{n}\sum_{i=1}^n \left(y_i - \bar{y} + \beta_1(\bar{x} - x_i)\right)(\bar{x} - x_i) = 0\)</p>
+
+
+<p>\(\sum_{i=1}^n (\left(y_i - \bar{y}) + \beta_1(\bar{x} - x_i)\right)(\bar{x} - x_i) = 0\)</p>
+<p>\(\beta_1 = \frac{\sum_{i=1}^n \left(y_i - \bar{y}\right)(x_i - \bar{x})}{\sum_{i=1}^n (\bar{x} - x_i)(\bar{x} - x_i)}\)</p>
+<mark style="padding-top: 8px; padding-bottom: 8px">\(\beta_1 = \frac{\sigma_{xy}}{\sigma_x^2}\)</mark>
+
+<div class="uk-heading-divider" style="margin-bottom: 0px; margin-top: 20px;">
+</div>
+
+<p><span class="uk-text-secondary" style="font-weight: bold;">Python Example</span></p>
+    
+
+<iframe src="Univariant-Linear-Regression-Example.html" 
+frameborder="0" scrolling="no" onload="resizeIframe(this)" width="100%"></iframe>
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
