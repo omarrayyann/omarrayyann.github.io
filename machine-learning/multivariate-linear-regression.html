@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+<script>
+
+    function resizeIframe(obj) {
+  
+      obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  
+    }
+  
+  </script>
+
+<title>Introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+<link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+  <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-flex-center">
+        <li class="uk-parent"><a href="/index.html">Home</a></li>
+        <li class="uk-active"><a href="/projects.html">Projects</a></li>
+        <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+        <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+      </ul>
+  </div>
+</nav>
+
+<nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+  <div class="uk-navbar-left">
+    <ul class="uk-navbar-nav">
+      <li>
+      <a class="uk-navbar-toggle" href="#">
+          <span uk-navbar-toggle-icon></span>
+      </a>
+      <div class="uk-navbar-dropdown">
+          <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="uk-parent"><a href="/index.html">Home</a></li>
+              <li class="uk-active"><a href="/projects.html">Projects</a></li>
+              <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+              <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+          </ul>
+      </div>
+      </li>
+      </ul>
+  </div>
+</nav>
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    <table>
+    <tr>
+    <td>
+    <h2 style="margin-bottom: 10px">Introduction to Machine Learning</h2>
+    </td>
+    </tr>
+    </table> 
+    </div>
+       
+    <h3 style="margin-bottom: 10px; margin-top: 30px;">Multivariate Linear Regression</h3>
+
+    <p uk-margin style="text-align: justify">
+        Multivariate linear regression is a statistical technique used for modeling the relationship between multiple independent variables and a dependent variable \(y\). In this approach, we aim to find a linear equation that best represents the relationship between the variables.
+    </p>
+
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    </div>
+    
+    <p><span class="uk-text-secondary" style="font-weight: bold;">1. Prediction Equation:</span></p>
+    <p>\(y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \ldots + \beta_nx_n\)</p>
+    
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    </div>
+    
+    <p><span class="uk-text-secondary" style="font-weight: bold;">2. Loss Function:</span></p>
+    <p>\(L(\beta_0,\beta_1,\beta_2,\ldots,\beta_n) = \frac{1}{2n}\sum_{i=1}^n (y_i - (\beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \ldots + \beta_nx_{ni}))^2\)</p>
+    
+    <div class="uk-heading-divider" style="margin-bottom: 0px">
+    </div>
+    
+    <p><span class="uk-text-secondary" style="font-weight: bold;">3. Optimizing the Loss Function:</span></p>
+
+    <p>We can minimize \(L(\beta_0,\beta_1,\beta_2,\ldots,\beta_n)\) by taking partial derivatives with respect to \(\beta_0, \beta_1, \beta_2, \ldots, \beta_n\), and setting them to zero.
+
+    <!-- Include the derivation for each parameter here if necessary -->
+
+    <mark style="padding-top: 8px; padding-bottom: 8px">
+        <!-- Include the final equations for each parameter here -->
+    </mark>
+
+    </p>
+
+    <div class="uk-heading-divider" style="margin-bottom: 0px; margin-top: 20px;">
+    </div>
+
+    <p><span class="uk-text-secondary" style="font-weight: bold;">Python Example</span></p>
+
+    <iframe src="Multivariate-Linear-Regression-Example.html" frameborder="0" scrolling="no" onload="resizeIframe(this)" width="100%"></iframe>
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+</body>
+</html>
