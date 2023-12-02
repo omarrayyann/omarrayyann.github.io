@@ -15,7 +15,7 @@
 </script>
 
 
-<title>Single Linked List - Omar Rayyan</title>
+<title>Stack - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
 
@@ -79,10 +79,10 @@
         <tr>
          
         <td>
-        <h2 style="margin-bottom: 10px">Single Linked List</h1>
+        <h2 style="margin-bottom: 10px">Stack</h1>
         <!-- <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p> -->
         <p uk-margin style="margin-bottom: 10px">
-          <a href="https://github.com/omarrayyann/Data-Structures/blob/main/SingleLinkedList.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          <a href="https://github.com/omarrayyann/Data-Structures/blob/main/Stack.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
           
       </p>  
        
@@ -91,24 +91,18 @@
         </table> 
         </div>
        
+        <p uk-margin style="text-align: justify">
+            A stack is a data structure that operates on a Last-In, First-Out (LIFO) basis, meaning the last element added is the first one to be removed. 
+        </p>
+        <p uk-margin style="text-align: justify">
+            <b style="color: black;">Time Complexities:</b>
+            <ul>
+                <li><b style="color: black;">Push (Insertion at Top):</b> O(1)</li>
+                <li><b style="color: black;">Pop (Deletion from Top):</b> O(1)</li>
+                <li><b style="color: black;">Peek (Top Element Access):</b> O(1)</li>
+            </ul>
+        </p>
         
-        <p uk-margin style="text-align: justify">
-            A data structure consisting of nodes, where each node contains two components: data and a reference (or link) to the next and previous nodes in the sequence. This structure allows for efficient insertion and deletion of elements at the beginning or end of the list, but accessing elements in the middle may require traversing the list from the beginning.
-        </p>  
-        <p uk-margin style="text-align: justify">
-          <b style="color: black ;">Time Complexities:</b>
-          <ul>
-            <li><b style="color: black ;">Insertion at Start:</b> O(1) </li>
-            <li><b style="color: black ;">Insertion at End:</b> O(n) </li>
-            <li><b style="color: black ;">Deletion at Start:</b> O(1) </li>
-            <li><b style="color: black ;">Deletion at End:</b> O(n) </li>
-            <li><b style="color: black ;">Deletion by Index:</b> O(n) </li>
-            <li><b style="color: black ;">Random Access:</b> O(n) </li>
-
-          </ul>
-        </p>  
-      
-
 
         <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
 
@@ -117,58 +111,52 @@
           <pre class='brush: cpp '>
             #include&ltiostream&gt
             using namespace std;
-            
-            class Node{
+
+            class MyStack{
                 private:
-                    int element;
-                    Node* next;
+                    int* array;
+                    int size;
+                    int capacity;
                 public:
-                    Node(int element){
-                        next = NULL;
-                        this-&gtelement = element;
+                    MyStack(){
+                        array = new int[1];
+                        size = 0;
+                        capacity = 1;
                     }
-                friend class SingleLinkedList;        
-            };
-            
-            class SingleLinkedList{
-                private:
-                    Node* head;
-                public:
-                    SingleLinkedList(){
-                        head = NULL;
+                    int getSize(){
+                        return size;
                     }
-                    int size(){
-                        int count = 0;
-                        Node* temp = head;
-                        while(temp != NULL){
-                            count++;
-                            temp = temp-&gtnext;
+                    int getCapacity(){
+                        return capacity;
+                    }
+                    void push(int element){
+                        if(size+1&gtcapacity){
+                            int new_capacity = capacity*2;
+                            int* newArray = new int[new_capacity];
+                            for(int i = 0; i&ltsize; i++){
+                                newArray[i] = array[i];
+                            }
+                            newArray[size] = element;
+                            size++;
+                            array = newArray;
+                            capacity = new_capacity;
+                        } else {
+                            array[size] = element;
+                            size++;
                         }
-                        return count;
                     }
-                    bool empty(){
-                        return head==NULL;
+                    void pop(){
+                        size = max(size-1,0);
                     }
-                    void addFront(int element){
-                        Node* newNode = new Node(element);
-                        if(empty()){
-                            head = newNode;
-                            return;
+                    int top(){
+                        if(size&gt0){
+                            return array[size-1];
                         }
-                        newNode-&gtnext = head;
-                        head = newNode;
+                        return -1;
                     }
-                    void removeFront(){
-                        if(!empty()){
-                            head = head-&gtnext;
-                        }   
-                    }
-                   
                     void display(){
-                        Node* temp = head;
-                        while(temp != NULL){
-                            cout &lt&lt temp-&gtelement &lt&lt " ";
-                            temp = temp-&gtnext;
+                        for(int i = 0; i&ltsize; i++){
+                            cout &lt&lt array[i] &lt&lt " ";
                         }
                     }
             };
