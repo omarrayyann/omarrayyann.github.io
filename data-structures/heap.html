@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>heap - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Heap</h1>
+        <!-- <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p> -->
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="https://github.com/omarrayyann/Data-Structures/blob/main/Heap.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        <p uk-margin style="text-align: justify">
+            A heap is a tree-based data structure where the parent node's key is smaller than or equal to its children's keys. It is commonly used to implement priority queues and provides efficient operations for finding and removing the smallest (or largest) element.
+        </p>
+        <p uk-margin style="text-align: justify">
+            <b style="color: black;">Time Complexities:</b>
+            <ul>
+                <li><b style="color: black;">Insertion:</b> O(log n)</li>
+                <li><b style="color: black;">Deletion (Pop):</b> O(log n)</li>
+                <li><b style="color: black;">Find Min/Max:</b> O(1)</li>
+            </ul>
+        </p>
+        
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            #include&ltiostream&gt
+            using namespace std;
+
+            class MyHeap{
+                private:
+                    int* array;
+                    int size;
+                    int capacity;
+                public:
+                    MyHeap(int capacity){
+                        array = new int[capacity];
+                        size = 0;
+                        this-&gtcapacity = capacity;
+                    }
+                    int getSize(){
+                        return size;
+                    }
+                    bool empty(){
+                        return size==0;
+                    }
+                    int parent(int i){
+                        return (i-1)/2;
+                    }
+                    bool hasLeft(int i){
+                        return 2*i+1&lt=size;
+                    }
+                    int left(int i){
+                        return 2*i+1;
+                    }
+                    bool hasRight(int i){
+                        return 2*i+2&lt=size;
+                    }
+                    int right(int i){
+                        return 2*i+2;
+                    }
+                    void double_capacity(){
+                        int* newArray = new int[capacity*2];
+                        for(int i = 0; i&ltcapacity; i++){
+                            newArray[i] = array[i];
+                        }
+                        delete[] array;
+                        capacity *= 2;
+                        array = newArray;
+                    }
+                    void insert(int element){
+                        if(size+1&lt=capacity){
+                            double_capacity();
+                        }
+                        array[size]=element;
+                        up_heap(size);
+                        size++;
+                    }
+                    void up_heap(int i){
+                        while(parent(i)!=i){
+                            if(array[parent(i)]&gtarray[i]){
+                                int temp = array[i];
+                                array[i] = array[parent(i)];
+                                array[parent(i)] = temp;
+                            } else {
+                                break;
+                            }
+                            i = parent(i);
+                        }
+                    }
+                    int min(){
+                        if(!empty()){
+                            return array[0];
+                        }
+                        return -1;
+                    }
+                    void downHeap(int i){
+                        if(!hasLeft(i) && !hasRight(i)){
+                            return;
+                        } else if (hasLeft(i) && hasRight(i)){
+                            if(array[left(i)]&ltarray[right(i)]){
+                                if(array[left(i)]&ltarray[i]){
+                                    int temp = array[left(i)];
+                                    array[left(i)] = array[i];
+                                    array[i] = temp;
+                                    downHeap(left(i));
+                                }
+                            } else {
+                                if(array[right(i)]&ltarray[i]){
+                                    int temp = array[right(i)];
+                                    array[right(i)] = array[i];
+                                    array[i] = temp;
+                                    downHeap(right(i));
+                                }
+                            }
+                        }
+                    }
+                    void pop(){
+                        if(empty()){
+                            return;
+                        }
+                        size--;
+                        if(empty()){
+                            return;
+                        }
+                        array[0] = array[size];
+                        downHeap(0);
+                    }
+
+            };
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
