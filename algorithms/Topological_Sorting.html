@@ -106,50 +106,74 @@
 
           </div>
           <pre class='brush: cpp '>
-              vector&ltbool&gt visited;
-              stack&ltint&gt finished;
-              
-              // assuming the graph is acyclic
-              void topological_sorting(vector&ltvector&ltint&gt &graph)
-              {
-                  visited.resize(graph.size(), false);
-                  for (int i = 0; i &lt graph.size(); i++)
-                  {
-                      if (!visited.at(i))
-                      {
-                          DFS(graph, i);
-                      }
-                  }
-              }
-              
-              void DFS(vector&ltvector&ltint&gt &graph, int vertix)
-              {
-              
-                  visited.at(vertix) = true;
-                  for (int i = 0; i &lt graph.at(vertix).size(); i++)
-                  {
-                      if (!visited.at(graph.at(vertix).at(i)))
-                      {
-                          DFS(graph, graph.at(vertix).at(i));
-                      }
-                  }
-              
-                  finished.push(vertix);
-              }
-              
-              int main()
-              {
-                  vector&ltvector&ltint&gt graph = {{1, 3}, {2}, {}, {1, 4, 5}, {5}, {}};
-                  topological_sorting(graph);
-              
-                  // Possible Order
-              
-                  while (!finished.empty())
-                  {
-                      cout &lt finished.top() &lt " ";
-                      finished.pop();
-                  }
-              }
+            #include &ltiostream&gt
+            #include &ltvector&gt
+            
+            using namespace std;
+            
+            vector&ltbool&gt visited;
+            vector&ltint&gt finished;
+            
+            void DFS(vector&ltvector&ltint&gt&gt graph, int s){
+            
+                if(visited[s]){
+                    return;
+                }
+            
+                visited[s] = true;
+            
+                for(int i = 0; i&ltgraph[s].size(); i++){
+                    if(!visited[graph[s][i]]){
+                        DFS(graph,graph[s][i]);
+                    }
+                }
+            
+                finished.push_back(s);
+            
+            }
+            
+            vector&ltint&gt topological_sorting(vector&ltvector&ltint&gt&gt graph){
+            
+                visited.resize(graph.size(),false);
+            
+                for(int i = 0; i&ltgraph.size(); i++){
+                    DFS(graph,i);
+                }
+            
+                reverse(finished.begin(),finished.end());
+            
+                return finished;
+            
+            }
+             
+            int main()
+            {
+                vector&ltvector&ltint&gt&gt graph = {{1, 3}, {2}, {}, {1, 4, 5}, {5}, {}};
+                vector&ltint&gt my_order = topological_sorting(graph);
+                vector&ltint&gt correct_order = {0,3,4,5,1,2};
+            
+                if(correct_order.size()!=my_order.size()){
+                    cout &lt&lt "Wrong!" &lt&lt endl;
+                    for(int i = 0; i&ltmy_order.size(); i++){
+                        cout &lt&lt my_order[i] &lt&lt " ";
+                    }
+                    return 0;
+                }
+            
+                for(int i = 0; i&ltmy_order.size(); i++){
+                    if(correct_order[i]!=my_order[i]){
+                        cout &lt&lt "Wrong!" &lt&lt endl;
+                        for(int i = 0; i&ltmy_order.size(); i++){
+                            cout &lt&lt my_order[i] &lt&lt " ";
+                        }
+                        return 0;
+                    }
+                }
+            
+                cout &lt&lt "Success!" &lt&lt endl;
+                
+                
+            }
           </pre>
 
           <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
