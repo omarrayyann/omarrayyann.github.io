@@ -104,6 +104,16 @@
 
           </div>
           <pre class='brush: cpp '>
+            #include &ltiostream&gt
+            #include &ltvector&gt
+            #include &ltclimits&gt
+            #include &ltcmath&gt
+            #include &ltunordered_map&gt
+            #include &ltunordered_set&gt
+            #include &ltqueue&gt
+
+            using namespace std;
+
             // {From, To}, Weight
             typedef pair&ltvector&ltint&gt, int&gt edge;
             
@@ -175,7 +185,6 @@
             
                 // Edges in MST
                 vector&ltvector&ltint&gt&gt MST_Edges;
-                vector&ltvector&ltint&gt&gt MST_Graph;
             
                 // Sorted Edges
                 priority_queue&ltedge, vector&ltedge&gt, edgeSorting&gt edgesPQ;
@@ -212,37 +221,7 @@
                     }
                 }
             
-                MST_Graph.resize(graph.size());
-                for (auto edge : MST_Edges)
-                {
-                    MST_Graph.at(edge.at(0)).push_back(edge.at(1));
-                    MST_Graph.at(edge.at(1)).push_back(edge.at(0));
-                }
-            
-                return MST_Graph;
-            }
-            
-            int main()
-            {
-                // Adjacency Matrix
-                vector&ltvector&ltint&gt&gt graph = {
-                    {0, 2, 4, 0, 0, 0},
-                    {2, 0, 2, 4, 2, 0},
-                    {4, 2, 0, 0, 3, 0},
-                    {0, 4, 0, 0, 3, 2},
-                    {0, 2, 3, 3, 0, 2},
-                    {0, 0, 0, 2, 2, 0},
-                };
-            
-                vector&ltvector&ltint&gt&gt MST_Graph = minimumSpanningTree(graph);
-                cout &lt&lt "MST Includes: " &lt&lt endl;
-                for (int i = 0; i &lt MST_Graph.size(); i++)
-                {
-                    for (auto edge : MST_Graph.at(i))
-                    {
-                        cout &lt&lt "(" &lt&lt i &lt&lt ", " &lt&lt edge &lt&lt ")" &lt&lt endl;
-                    }
-                }
+                return MST_Edges;
             }
           </pre>
 

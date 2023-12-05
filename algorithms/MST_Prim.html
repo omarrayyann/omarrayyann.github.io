@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>MST - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="..//experience/apssByOmar_Logo.JPG">
+
+<link rel="stylesheet" href="../index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="../projectsIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+<link href="shCore.css" rel="stylesheet" type="text/css" />
+  <link href="shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html">Home</a></li>
+                <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html">Participations</a></li>
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+         
+        <td>
+        <h2 style="margin-bottom: 10px">Minimum Spanning Tree (Prim Algorithm)</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px; font-size: 15px;">Greedy Algorithm</p>
+        <p uk-margin style="margin-bottom: 10px">
+          <a href="http://github.com/omarrayyann/Algorithms/blob/main/MST_Prim.cpp" class="uk-button uk-button-secondary uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 125px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>C++ Code</span></a>
+          
+      </p>  
+       
+    </td>
+    </tr>
+        </table> 
+        </div>
+       
+        
+        <p uk-margin style="text-align: justify">
+            Prim's algorithm is a greedy algorithm used to find the minimum spanning tree of a connected, weighted graph. It starts from an arbitrary vertex and grows the minimum spanning tree by adding the shortest edge that connects the tree to a new vertex, ensuring that it never forms a cycle. The algorithm typically utilizes a priority queue to efficiently select the next edge to include in the minimum spanning tree.
+        </p>
+        
+        <p uk-margin style="text-align: justify">
+            <b style="color: black;">Time Complexity: O(mlogn)</b>
+        </p>
+
+        <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+          </div>
+          <pre class='brush: cpp '>
+            #include &ltiostream&gt
+            #include &ltvector&gt
+            #include &ltclimits&gt
+            #include &ltcmath&gt
+            #include &ltunordered_map&gt
+            #include &ltunordered_set&gt
+            #include &ltqueue&gt
+
+            using namespace std;
+
+            vector&ltvector&ltint&gt&gt minimumSpanningTree(vector&ltvector&ltint&gt&gt& graph){
+                priority_queue&ltpair&ltint,pair&ltint,int&gt&gt,vector&ltpair&ltint,pair&ltint,int&gt&gt&gt,greater&ltpair&ltint,pair&ltint,int&gt&gt&gt&gt pq;
+                unordered_set&ltint&gt set;
+                vector&ltvector&ltint&gt&gt answer;
+                int lastNode = 0;
+                int count = 1;
+                while(count&ltgraph.size()){
+                    for(int i = 0; i&ltgraph[lastNode].size(); i++){
+                        if(graph[lastNode][i]!=0){
+                            pq.push(make_pair(graph[lastNode][i],make_pair(lastNode,i)));
+                        }
+                    }
+                    bool done = false;
+                    while(!done){
+                        pair&ltint,pair&ltint,int&gt&gt n = pq.top();
+                        if(set.find(n.second.first)!=set.end() && set.find(n.second.second)!=set.end()){
+                            pq.pop();
+                            continue;
+                        }
+                        answer.push_back({pq.top().second.first,pq.top().second.second});
+                        set.insert(pq.top().second.first);
+                        set.insert(pq.top().second.second);
+                        done = true;
+                        if(lastNode==pq.top().second.first){
+                            lastNode = pq.top().second.second;
+                        } else {
+                            lastNode = pq.top().second.first;
+                        }
+                        pq.pop();
+                        count++;
+                    }
+
+                }
+                return answer;
+            }
+          </pre>
+
+          <div class="uk-heading-divider" style="margin-bottom: 20px; padding-bottom: 0px; padding-top: 0px;">
+
+
+
+</div>
+</div>
+<script src="shCore.js"></script>
+<script src="shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
+
+
+</body>
+</html>
