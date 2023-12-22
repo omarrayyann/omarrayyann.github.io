@@ -12,8 +12,8 @@ body {
 #visualizer {
   background-color: rgb(255, 255, 255);
   position: relative;
-  width: 90vmin; /* Use vmin to ensure it's responsive */
-  height: 90vmin; /* Use vmin to ensure it's responsive */
+  width: 80vmin; /* Use vmin to ensure it's responsive */
+  height: 80vmin; /* Use vmin to ensure it's responsive */
   border: 1px solid #ccc;
   display: flex;
   justify-content: center;

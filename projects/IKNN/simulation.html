@@ -4,20 +4,64 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css">
   <title>IKNN Simulation Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/experience/apssByOmar_Logo.JPG">
+<link rel="stylesheet" href="/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+  <style>
+    /* Add CSS for vertical stacking */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fafafa;
+    }
+
+    h1,
+    .content-before-visualizer,
+    .visualizer-container {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .visualizer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
 
-  <div id="visualizer">
-    <div class="center-circle"></div>
-    <!-- <div class="circle circle-1"></div>
-    <div class="circle circle-2"></div> -->
-    <div class="line line-1"></div>
-    <div class="line line-2"></div>
-    <div class="target-circle"></div>
+
+
+  <div class="content-before-visualizer" style="text-align: center; align-self: center;">
+   
+    <p style="vertical-align: middle; margin-bottom: 0px;">Click anywhere within the circle <a href="report.pdf">(More details)</a></p>
   </div>
+  <div class="visualizer-container">
+    <!-- Scroll down to see the visualizer -->
+    <div id="visualizer">
+      <div class="center-circle"></div>
+      <!-- <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div> -->
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+      <div class="target-circle"></div>
+    </div>
+  </div>
+
+
+
   
   <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
   <script src="index.js"></script>
 </body>
-
 </html>
