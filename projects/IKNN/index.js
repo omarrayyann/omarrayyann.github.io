@@ -151,10 +151,17 @@ function useModel(q1_current, q2_current, x, y) {
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    var done = true;
     
   
     visualizer.addEventListener("click", async function(event) {
       
+
+      if(!done){
+        return
+      }
+      done = false;
       started = false;
 
       modifyTargetPosition(event.clientX - visualizer.getBoundingClientRect().left,event.clientY - visualizer.getBoundingClientRect().top)
@@ -191,7 +198,7 @@ function useModel(q1_current, q2_current, x, y) {
         delta_x = delta_x/sum
         delta_y = delta_y/sum
 
-        factor = 0.5 * (i/100)
+        factor = 0.75 * (i/100)
 
         delta_x = delta_x * factor
         delta_y = delta_y * factor
@@ -202,6 +209,7 @@ function useModel(q1_current, q2_current, x, y) {
 
         if((((x-previous_x)*(x-previous_x) + (y-previous_y)*(y-previous_y))**0.5) < 0.2){
           console.log("done")
+          done = true;
           fadeOutTarget();
           break;
         }
