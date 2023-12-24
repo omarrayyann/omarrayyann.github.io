@@ -88,32 +88,87 @@
 
 <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
 
-    <!-- CARD -->
+
+  <!-- CARD -->
   <div>
     <div class="uk-card-default uk-width-1-1@m" id="card">
         <div class="uk-card-header">
           <div class="uk-grid-small uk-flex-middle" uk-grid>
               <div class="uk-width-auto">
-                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/surgical-robotics/logo.jpg">
+                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" style="border-style: solid; border-color: rgb(238, 238, 238); border-width: 0.05" src="projects/IKNN/iknn.png">
               </div>
               <div class="uk-width-expand">
-                  <h3 class="uk-card-title uk-margin-remove-bottom">Surgical Robotics</h3>
-                  <p class="uk-text-meta uk-margin-remove-top"><time>Oct 2022 - <span style="color: #40c060">Active</span></time></p>
+                  <h3 class="uk-card-title uk-margin-remove-bottom">IK Neural Network</h3>
+                  <p class="uk-text-meta uk-margin-remove-top"><time>Dec 2023</span></time></p>
               </div>
           </div>
-          <!-- <div style="margin-top: 10px; text-align: left;">
-          <span class="uk-label uk-label-tag">Robotics</span>
-          <span class="uk-label uk-label-tag">Optimization</span>
-          </div> -->
       </div>
       <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left" class="row1">Developing a ROS Algorithm for Precise Control of the KUKA iiwa-14 R820 Robot with Differential Kinematics and Remote Center of Motion (RCM) Constraint Adherence in Minimally Invasive Surgery (MIS). Developed during my role at the Center of Artifical Intelligence and Robotics (CAIR).</p>
-        </div>
+          <p style="text-align: left"  class="row0">Training a machine learning model to compute the inverse kinematics of a robot manipulator system alongside a live simulation.</p>
+      </div>
       <div class="uk-card-footer">
-      <a href="projects/surgical-robotics.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+        <a href="projects/ik-nn.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+    </div>
+  </div>  
+  </div>
+
+  <!-- CARD -->
+  <div>
+    <div class="uk-card-default uk-width-1-1@m" id="card">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" style="border-style: solid; border-color: rgb(238, 238, 238); border-width: 0.05" src="projects/k-mean/kmeans.jpg">
+              </div>
+              <div class="uk-width-expand">
+                  <h3 class="uk-card-title uk-margin-remove-bottom">K-Mean Visualizer</h3>
+                  <p class="uk-text-meta uk-margin-remove-top"><time>Dec 2023</span></time></p>
+              </div>
+          </div>
+      </div>
+      <div class="uk-card-body"style="min-height: 20px">
+          <p style="text-align: left"  class="row0">A tool to visualize the k-means unsupervised ML algorithm, used for clustering unlabeled data into groups based on similarity.</p>
+      </div>
+      <div class="uk-card-footer">
+      <a href="projects/k-means-visualizer.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
   </div>
   </div>  
   </div>
+
+
+
+    <!-- CARD -->
+    <div>
+        <div class="uk-card-default uk-width-1-1@m" id="card">
+            <div class="uk-card-header">
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                  <div class="uk-width-auto">
+                      <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/rcm-controller/logo.jpg">
+                  </div>
+                  <div class="uk-width-expand">
+                      <h3 class="uk-card-title uk-margin-remove-bottom">RCM Controller</h3>
+                      <p class="uk-text-meta uk-margin-remove-top"><time>Jan 2023 - Jul 2023</time></p>
+                  </div>
+              </div>
+          </div>
+          <div class="uk-card-body"style="min-height: 20px">
+              <p style="text-align: left" id="row0Head" class="row0">Developing a ROS Algorithm for Precise Control of the KUKA iiwa-14 R820 Robot with Differential Kinematics and RCM Constraint Adherence in MIS.</p>
+            </div>
+          <div class="uk-card-footer">
+          <a href="projects/rcm-controller.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+      </div>
+      </div>  
+      </div>
+
+
+</div>
+
+
+
+<!-- Row -->
+
+<div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
+
 
 
 
@@ -165,15 +220,6 @@
   </div>
  
 
-</div>
-
-
-
-<!-- Row -->
-
-<div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
-
-
    <!-- CARD -->
    <div>
     <div class="uk-card-default uk-width-1-1@m" id="card">
@@ -189,13 +235,25 @@
          </div>
      </div>
      <div class="uk-card-body" style="min-height: 20px">
-         <p style="text-align: left" id="row2Head" class="row2">LEBSI enables people and clothing brands to set up online stores in minutes. Hence, sellers no longer have to manage their stores across multiple social media platforms at the same time. It provides physical stores with virtual marketplaces and allows them to expose themselves to potential customers, enabling them to compete with online brands.</p>
+         <p style="text-align: left" id="row1Head" class="row1">LEBSI enables people and clothing brands to set up online stores in minutes. Hence, sellers no longer have to manage their stores across multiple social media platforms at the same time. It provides physical stores with virtual marketplaces and allows them to expose themselves to potential customers, enabling them to compete with online brands.</p>
      </div>
      <div class="uk-card-footer">
        <a href="projects/lebsi.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
    </div>
    </div>  
    </div>
+
+
+   
+
+</div>
+
+
+
+
+<!-- Row -->
+
+<div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
 
 
      <!-- CARD -->
@@ -222,6 +280,32 @@
       </div>
 
 
+  <!-- CARD -->
+  <div>
+    <div class="uk-card-default uk-width-1-1@m" id="card">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/past-code/logo.png">
+              </div>
+              <div class="uk-width-expand">
+                  <h3 class="uk-card-title uk-margin-remove-bottom">Past Code</h3>
+                  <p class="uk-text-meta uk-margin-remove-top"><time>Jan 2021 - <span style="color: #40c060">Active</span></time></p>
+              </div>
+          </div>
+      </div>
+      <div class="uk-card-body"style="min-height: 20px">
+          <p style="text-align: left"   id="row2Head" class="row2">Past Code is an app that helps international students find supporting exam papers using their phone camera. Specific patterns are extracted from images to match their document with supporting papers. As of January 2022, over 200,000 papers from 64 different countries were scanned on Past Code.</p>
+      </div>
+      <div class="uk-card-footer">
+      <a href="projects/past-code.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+  
+  </div>
+  </div>  
+  </div>
+
+
+
     <!-- CARD -->
     <div>
         <div class="uk-card-default uk-width-1-1@m" id="card">
@@ -237,7 +321,7 @@
             </div>
         </div>
         <div class="uk-card-body"style="min-height: 10px">
-            <p style="text-align: left" class="row2 ">A console application that handle system files as a communication channel. The application reads two files (CSV and JSON file formats), compares the records of these files and produce result files showing the matched, mismatched and missing records.</p>
+            <p style="text-align: left" class="row2">A console application that handle system files as a communication channel. The application reads two files (CSV and JSON file formats), compares the records of these files and produce result files showing the matched, mismatched and missing records.</p>
         </div>
         <div class="uk-card-footer">
         <a href="projects/reconciliation-system.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
@@ -277,29 +361,6 @@
   </div>  
   </div>
    
-
-  <!-- CARD -->
-  <div>
-    <div class="uk-card-default uk-width-1-1@m" id="card">
-        <div class="uk-card-header">
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-              <div class="uk-width-auto">
-                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/past-code/logo.png">
-              </div>
-              <div class="uk-width-expand">
-                  <h3 class="uk-card-title uk-margin-remove-bottom">Past Code</h3>
-                  <p class="uk-text-meta uk-margin-remove-top"><time>Jan 2021 - <span style="color: #40c060">Active</span></time></p>
-              </div>
-          </div>
-      </div>
-      <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left"   class="row3">Past Code is an app that helps international students find supporting exam papers using their phone camera. Specific patterns are extracted from images to match their document with supporting papers. As of January 2022, over 200,000 papers from 64 different countries were scanned on Past Code.</p>
-      </div>
-      <div class="uk-card-footer">
-      <a href="projects/past-code.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
-  </div>
-  </div>  
-  </div>
   
 
    <!-- CARD -->
@@ -325,6 +386,29 @@
    </div>  
    </div>
 
+
+  <!-- CARD -->
+  <div>
+    <div class="uk-card-default uk-width-1-1@m" id="card">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/seek-nyuad/logo.png">
+              </div>
+              <div class="uk-width-expand">
+                  <h3 class="uk-card-title uk-margin-remove-bottom">Seek NYUAD</h3>
+                  <p class="uk-text-meta uk-margin-remove-top"><time>Nov 2021</time></p>
+              </div>
+          </div>
+      </div>
+      <div class="uk-card-body"style="min-height: 20px">
+          <p style="text-align: left" class="row3">SEEK NYUAD is a platform where NYUAD students can both Help and Seek help. It was created at the HACKNYUAD 2021 hackathon.</p>
+      </div>
+      <div class="uk-card-footer">
+      <a href="projects/seek-nyuad.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+  </div>
+  </div>  
+  </div>
 
 </div>
 
@@ -386,28 +470,29 @@
      </div>
      
 
-  <!-- CARD -->
-  <div>
+
+   <!-- CARD -->
+   <div>
     <div class="uk-card-default uk-width-1-1@m" id="card">
         <div class="uk-card-header">
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-              <div class="uk-width-auto">
-                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/seek-nyuad/logo.png">
-              </div>
-              <div class="uk-width-expand">
-                  <h3 class="uk-card-title uk-margin-remove-bottom">Seek NYUAD</h3>
-                  <p class="uk-text-meta uk-margin-remove-top"><time>Nov 2021</time></p>
-              </div>
-          </div>
-      </div>
-      <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left" class="row4">SEEK NYUAD is a platform where NYUAD students can both Help and Seek help. It was created at the HACKNYUAD 2021 hackathon.</p>
-      </div>
-      <div class="uk-card-footer">
-      <a href="projects/seek-nyuad.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
-  </div>
-  </div>  
-  </div>
+         <div class="uk-grid-small uk-flex-middle" uk-grid>
+             <div class="uk-width-auto">
+                 <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/quizmy/logo.png">
+             </div>
+             <div class="uk-width-expand">
+                 <h3 class="uk-card-title uk-margin-remove-bottom">Quizmy</h3>
+                 <p class="uk-text-meta uk-margin-remove-top"><time>Apr 2021 - <span style="color: #40c060">Active</span></time></p>
+             </div>
+         </div>
+     </div>
+     <div class="uk-card-body" style="min-height: 20px">
+         <p style="text-align: left" class="row4">Quizmy is a trivia app allowing users to create quizzes and compete with friends on a global leaderboard.</p>
+     </div>
+     <div class="uk-card-footer">
+       <a href="projects/quizmy.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+   </div>
+   </div>  
+   </div>
 
    
   
@@ -466,29 +551,6 @@
       </div>  
       </div>
     
-
-   <!-- CARD -->
-   <div>
-    <div class="uk-card-default uk-width-1-1@m" id="card">
-        <div class="uk-card-header">
-         <div class="uk-grid-small uk-flex-middle" uk-grid>
-             <div class="uk-width-auto">
-                 <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/quizmy/logo.png">
-             </div>
-             <div class="uk-width-expand">
-                 <h3 class="uk-card-title uk-margin-remove-bottom">Quizmy</h3>
-                 <p class="uk-text-meta uk-margin-remove-top"><time>Apr 2021 - <span style="color: #40c060">Active</span></time></p>
-             </div>
-         </div>
-     </div>
-     <div class="uk-card-body" style="min-height: 20px">
-         <p style="text-align: left" class="row5">Quizmy is a trivia app allowing users to create quizzes and compete with friends on a global leaderboard.</p>
-     </div>
-     <div class="uk-card-footer">
-       <a href="projects/quizmy.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
-   </div>
-   </div>  
-   </div>
 
 </div>
 

@@ -139,13 +139,13 @@ function useModel(q1_current, q2_current, x, y) {
 
 
     function modifyCircle1Position(x, y) {
-      circle_1.style.left = x-5 + "px";
-      circle_1.style.top = y-5 + "px";
+      circle_1.style.left = x-6 + "px";
+      circle_1.style.top = y-6 + "px";
     }
   
     function modifyCircle2Position(x, y) {
-      circle_2.style.left = x-5 + "px";
-      circle_2.style.top = y-5 + "px";
+      circle_2.style.left = x-6 + "px";
+      circle_2.style.top = y-6 + "px";
     }
 
     function sleep(ms) {
