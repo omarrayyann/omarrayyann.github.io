@@ -21,7 +21,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 <script src="index.js"></script>
-<script src="projects.js"></script>
 
 
 
@@ -76,7 +75,7 @@
 <div class="uk-section uk-section-default" style="padding-top: 40px">
 <div class="uk-container" style="max-width: 825px">
     
-    <h1 style="font-weight: 300">Hello</h1>
+    <h1 style="font-weight: 300">hello</h1>
 
         <div class="uk-grid-match uk-child-width-1-2@m uk-grid" uk-grid="">
 
@@ -98,16 +97,20 @@
                 <ul style="padding-left: 0px; margin-top: 0px; margin-bottom: 0px;">
                     <a href="https://github.com/omarrayyann" uk-icon="github-alt" class="uk-icon"></a> &nbsp;&nbsp;
                     <a href="https://www.linkedin.com/in/omar-rayyan"uk-icon="linkedin" class="uk-icon"></a> &nbsp;&nbsp; 
-                    <a href="https://www.instagram.com/omarrayyann/?hl=en" uk-icon="instagram" class="uk-icon"></a> &nbsp;&nbsp;    
+                    <!-- <a href="https://www.instagram.com/omarrayyann/?hl=en" uk-icon="instagram" class="uk-icon"></a> &nbsp;&nbsp;     -->
                     <!-- <a href="https://twitter.com/omarrayyann?lang=en"  uk-icon="twitter" class="uk-icon"></a>&nbsp;&nbsp; -->
-                    
+                    <!-- <a style="text-transform:unset; font-weight:bold ; color: rgb(102, 102, 102); border-width: 0px; padding-left: 0px; padding-right: 0px;" class="uk-button uk-button-default uk-button-small" href="cv.pdf">                     
+                        <u>download cv</u>
+                    </a> -->
                 </ul>
             
                 <p uk-margin>
-                <a style="text-transform:unset; border-radius: 10px; padding-left: 18px; padding-right: 18px;" class="uk-button uk-button-default uk-button-small" href="cv.pdf">                     
+                <!-- <a style="text-transform:unset; border-radius: 10px; padding-left: 18px; padding-right: 18px;" class="uk-button uk-button-default uk-button-small" href="cv.pdf">                     
                     Curriculum Vitae  
-                </a>
-
+                </a> -->
+ <a style="text-transform:unset; font-weight:bold ; color: rgb(102, 102, 102); border-width: 0px; padding-left: 0px; padding-right: 0px;" class="uk-button uk-button-default uk-button-small" href="cv.pdf">                     
+                        <u>download cv</u>
+                    </a>
                 </p>
                 
             </div>
@@ -139,7 +142,7 @@
 <table style="width: 100%">
 <tr>
     <td>
-<h1 style="padding-bottom: 20px; font-weight: 300">Latest Projects</h1>
+<h1 style="padding-bottom: 20px; font-weight: 300">some projects</h1>
 </td>
 <td style="text-align: right; padding-bottom: 25px;" id="ViewMoreProjectsTop">
     <a href="/projects.html" class="uk-button uk-button-text" style="color: #4285E9; font-size: 16px">View All</a>
@@ -169,7 +172,7 @@
           </div>
       </div>
       <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left" class="row1">Developing a ROS Algorithm for Precise Control of the KUKA iiwa-14 R820 Robot with Differential Kinematics and Remote Center of Motion (RCM) Constraint Adherence in Minimally Invasive Surgery (MIS). Developed during my role at the Center of Artifical Intelligence and Robotics (CAIR).</p>
+          <p style="text-align: left" id="secondCol">RCM-Constrained trajectory tracking of the KUKA iiwa-14 R820 Robot using Differential Kinematics. The work of this projects has been accepted and published to the International Conference on Advanced Robotics (ICAR) 2023.</p>
       </div>
       <div class="uk-card-footer">
       <a href="projects/surgical-robotics.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
@@ -183,25 +186,24 @@
   <div>
     <div class="uk-card-default uk-width-1-1@m" id="card">
         <div class="uk-card-header">
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-              <div class="uk-width-auto">
-                  <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" style="border-style: solid; border-color: rgb(238, 238, 238); border-width: 0.05" src="projects/tanabu/logo.png">
-              </div>
-              <div class="uk-width-expand">
-                  <h3 class="uk-card-title uk-margin-remove-bottom">Tanabu</h3>
-                  <p class="uk-text-meta uk-margin-remove-top"><time>Mar 2023 - Apr 2023</span></time></p>
-              </div>
-          </div>
-      </div>
-      <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left" id="row1Head" class="row1">An open-source Python package that utilizes quantum machine learning to enhance the accuracy in predicting maintenance of energy grids. Tanabu uses a quantum support vector regressor algorithm to take in energy consumption trends to recommend maintenance in anticipation of potential strain on energy grids.</p>
-      </div>
-      <div class="uk-card-footer">
-      <a href="projects/tanabu.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
-  </div>
-  </div>  
-  </div>
-
+         <div class="uk-grid-small uk-flex-middle" uk-grid>
+             <div class="uk-width-auto">
+                 <img class="uk-border-rounded uk-child-width-auto" width="80" height="80" src="projects/lebsi/logo.jpg">
+             </div>
+             <div class="uk-width-expand">
+                 <h3 class="uk-card-title uk-margin-remove-bottom">LEBSI</h3>
+                 <p class="uk-text-meta uk-margin-remove-top"><time>Nov 2021 - <span style="color: #40c060">Active</span></time></p>
+             </div>
+         </div>
+     </div>
+     <div class="uk-card-body" style="min-height: 20px">
+         <p style="text-align: left" id="thirdCol">A platform enabling people and clothing brands to set up online stores within minutes. It reached #22 on the App Store Top Charts in 2022 and attracts sellers from Jordan, Egypt and the UAE.</p>
+     </div>
+     <div class="uk-card-footer">
+       <a href="projects/lebsi.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
+   </div>
+   </div>  
+   </div>
 
   <!-- CARD -->
   <div>
@@ -218,7 +220,7 @@
           </div>
       </div>
       <div class="uk-card-body"style="min-height: 20px">
-          <p style="text-align: left" class="row1">A handwriting assisting platform that provides contact-less kinesthetic feedback by utilizing magnetic forces. KATIB aims to help post-stroke patients regain writing skills through its easy-to-use software. It enables patients to perform physical tasks while receiving real-time feedback from their therapists.</p>
+          <p style="text-align: left" id="firstCol">A handwriting assisting platform that provides contact-less kinesthetic feedback by utilizing magnetic forces. It aims to help post-stroke patients regain writing skills through its easy-to-use software. </p>
       </div>
       <div class="uk-card-footer">
       <a href="projects/katib.html" class="uk-button uk-button-text" style="color: #4285E9">More Details</a>
