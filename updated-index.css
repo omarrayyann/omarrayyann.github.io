@@ -39,10 +39,13 @@ a {
 
 #longNav {
   display: run-in;
+  background-color: white;
 }
 #shortNav {
   display: none;
+  background-color: white;
 }
+
 .ignore-css {
   all: unset;
 }
