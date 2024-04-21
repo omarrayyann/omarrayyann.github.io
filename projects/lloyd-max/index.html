@@ -17,7 +17,16 @@
         <button onclick="iterateX()">Iterate X</button>
         <button onclick="iterateY()">Iterate Y</button>
         <button onclick="iterateXY()">Iterate Both</button>
+        <button onclick="iterate10()">Iterate 10 times</button>
+        <button onclick="iterate100()">Iterate 100 times</button>
         <input type="file" id="imageInput" accept="image/*">
+
+        <label for="scaleSlider">Bits per pixel (0-8):</label>
+        <input type="range" id="scaleSlider" min="0" max="8" value="5" oninput="updateField()">
+        <input type="text" id="displayField" value="5">
+        <h3 id="error">Error: 0.0</h3>
+
+
     </div>
 
 
@@ -28,7 +37,7 @@
             <img id="originalImage" src="#" alt="Original Image" style="display: none;">
         </div>
         <div class="grid-item">
-            <canvas id="modifiedImage"></canvas><h3 id="error">Error: 0.0</h3>
+            <canvas id="modifiedImage"></canvas>
         </div>
         <div class="grid-item title">Histogram Per Channel</div>
         <div class="grid-item title">Histogram Per Channel</div>
