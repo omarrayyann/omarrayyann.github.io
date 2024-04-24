@@ -296,7 +296,7 @@ function quantize() {
 function loadRandomPhoto(file_name="") {
     
     const folderPath = 'sample-images/';
-    const files = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpeg', '8.png', 'lena.jpg'];
+    const files = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpeg', '8.png', 'lena.jpg','hiba.jpeg'];
 
     // Randomly select a photo filename
     const randomIndex = Math.floor(Math.random() * files.length);
