@@ -8,10 +8,125 @@ var original_image = null;
 var global_width = 0;
 var global_height = 0;
 
+let webcam_original = document.getElementById('webcam_original');
+let webcam_modified= document.getElementById('webcam_modified');
+let overlay_original = document.getElementById("overlay_original");
+let overlay_modified = document.getElementById("overlay_modified");
+var webcam_view = false
 
 loadRandomPhoto('lena.jpg')
 x = [70.88796544811558, 117.78547105381112, 174.94581614262995]
 y = [47.50990010847216, 94.26603078775901, 141.30491131986324, 208.58672096539664]
+
+
+function sleepFor(sleepDuration){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){
+        console.log("wainting") /* Do nothing */ }
+}   
+
+function load_webcam(){
+
+    // Get access to the webcam
+    document.getElementById("originalImage").hidden = true
+    // document.getElementById("modifiedImage").hidden = true
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        // Display the webcam stream in the video element
+        webcam_original.srcObject = stream;
+        webcam_original.play();
+        // webcam_modified.srcObject = stream;
+        // webcam_modified.play();
+      })
+      .catch(function(error) {
+        console.log('Error accessing the webcam: ', error);
+      });
+
+    // Show the overlay
+    overlay_original.style.display = 'flex';
+    overlay_original.hidden = false
+    // overlay_modified.style.display = 'flex';
+    // overlay_modified.hidden = false
+
+    var original_canvas = document.getElementById('original_canvas');
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    webcam_original.addEventListener('play', async function() {
+
+        
+
+        // const modified_ctx = modifiedCanvas.getContext('2d');
+
+        var loop = function() {
+        var ctx = original_canvas.getContext('2d');
+        
+        const modifiedCanvas = document.getElementById('modifiedImage');
+        modifiedCanvas.width = webcam_original.videoWidth;
+        modifiedCanvas.height = webcam_original.videoHeight;
+
+        
+
+
+        var ctx_webcam = original_canvas.getContext('2d');
+       
+          if (!webcam_original.paused && !webcam_original.ended) {
+            // Draw the current frame from the video to the canvas
+            ctx_webcam.clearRect(0, 0, original_canvas.width, original_canvas.height);
+            ctx_webcam.drawImage(webcam_original, 0, 0, original_canvas.width, original_canvas.height);
+            // console.log("er")
+            // Get the pixel data from the canvas
+            global_image = ctx.getImageData(0, 0, original_canvas.width, original_canvas.height).data;
+            global_width = original_canvas.width
+            global_height = original_canvas.height
+            original_image = ctx.getImageData(0, 0, original_canvas.width, original_canvas.height)
+            // modified_ctx.drawImage(webcam_original, 0, 0, modifiedCanvas.width, modifiedCanvas.height);
+            
+            global_image = Array.from(global_image).map(element => parseFloat(element));
+
+            freq_list = get_frequency_table()
+
+            update_original_histogram();
+            // update()
+
+            quantize(); 
+            update_error();
+            document.getElementById("error").innerText = "MSE: " + global_error;
+            ctx = modifiedCanvas.getContext('2d');
+
+            image = new ImageData(new Uint8ClampedArray(global_image.map(element => Math.round(element))),original_canvas.width,original_canvas.height);
+
+            
+            
+            
+            ctx = modifiedCanvas.getContext('2d');
+            var renderer = document.createElement('canvas');
+            renderer.width = image.width;
+            renderer.height = image.height;
+            renderer.getContext('2d').putImageData(image, 0, 0);
+
+            ctx.drawImage(renderer, 0,0, original_canvas.width*2, original_canvas.height*2);
+
+            update_modified_histogram();
+
+
+
+            modifiedCanvas.style = "transform: scaleX(-1)"
+            
+            
+            // Call loop function recursively to continuously process frames
+            requestAnimationFrame(loop);
+            
+          }
+        }
+        loop();
+      });
+    }
+
+
+
 
 function update_bits(new_bits) {
     x = []

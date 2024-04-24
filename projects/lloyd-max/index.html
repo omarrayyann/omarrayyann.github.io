@@ -13,7 +13,9 @@
 <body style="background-color: rgb(255, 255, 255);">  
 
 
-    
+   
+
+      
     <p uk-margin>
             <p style="margin-top: 0px; margin-top: 15px;  color: #183A1D; font-size: 20px; font-weight: 100; ;"> LLoyd Max Quantizer Visualizer</p>
 
@@ -27,7 +29,6 @@
             <input type="file"  type="file" id="quantize_input">
             <button class="uk-button uk-button-default uk-button-medium" style="text-transform: none;  margin: 6px;">Load Quantization</button>
         </div>
-        <button class="uk-button uk-button-default uk-button-medium" style="text-transform: none; margin: 6px; " onclick="location.reload()">Reset</button>
         
         <button class="uk-button uk-button-default" style="text-transform: none;" type="button">Set bits/pixel</button>
         <div uk-dropdown style="text-transform: none;">
@@ -41,6 +42,9 @@
                 <li class="uk-active"><a onclick="update_bits(7)">7 bit</a></li>
             </ul>
         </div>
+        <button class="uk-button uk-button-default uk-button-medium" style="text-transform: none;  margin: 6px;" onclick="load_webcam()">Webcam View</button>
+        <button class="uk-button uk-button-default uk-button-medium" style="text-transform: none; margin: 6px; " onclick="location.reload()">Reset</button>
+
     </p>
 
 
@@ -55,6 +59,10 @@
     
         <div class="grid-item">
             <img id="originalImage" src="#" alt="Original Image" style="display: none;">
+            <div id="overlay_original" hidden>
+                <video id="webcam_original" autoplay></video>
+                <canvas id="original_canvas" hidden></canvas>
+              </div>
         </div>
         <div  class="grid-item histogram" id='original_histogram' ></div>
 
@@ -80,11 +88,11 @@
         <div class="grid-item">
             <canvas id="modifiedImage"></canvas>
         </div>
+        
        
         <div class="grid-item histogram" id='modified_histogram'></div>
        
     </div>
-
 
 
 
