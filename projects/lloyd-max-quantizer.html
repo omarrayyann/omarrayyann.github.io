@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Lloyd-Max Quantizer - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/experience/apssByOmar_Logo.JPG">
+<link rel="stylesheet" href="/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="projectsIndex.js"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html" style="text-transform: none; font-size: 15px;">Home</a></li>
+                <li class="uk-active"><a href="/projects.html" style="text-transform: none; font-size: 15px;">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html" style="text-transform: none; font-size: 15px;">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html"  style="text-transform: none; font-size: 15px;">Participations</a></li>
+
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html" style="text-transform: none; font-size: 15px;">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html" style="text-transform: none; font-size: 15px;">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html" style="text-transform: none; font-size: 15px;">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+            <td>
+            <img class="uk-border-rounded uk-child-width-auto" width="150" height="150" style="border-radius: 26.31px; margin-right: 20px; margin-bottom: 20px; border-style: solid; border-color: rgb(233, 233, 233); border-width: 0.01;" src="/projects/lloyd-max/lena.png">
+        </td>
+        <td id="titleWidth" style="padding-left: 0px;">
+            <h1 id="title" style="margin-bottom: 10px">Lloyd Max Quantizer</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px;"><time>May 2023</time></p>
+        <p uk-margin>
+            <a href="/projects/lloyd-max/index.html" class="uk-button uk-button-default uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 115px; border-radius: 10px;"><i uk-icon="play-circle" class="uk-icon-envelope-o uk-margin-small-right"></i><span>Launch</span></a>
+
+            
+        </p>  
+        
+    </td>
+    </tr>
+        </table> 
+        </div>
+        <ul class="uk-list uk-list-bullet">
+            <li> Implemented a Lloyd-Max quantizer for images, allowing compression by minimizing the mean-square error between an image and it's quantized version given a required number of bits per pixel. </li>
+            <p>Itereative equations used in the algorithm:</p>
+                <li>Decision Boundary Update: <span>\( x_i = \frac{y_i+y_{i+1}}{2} \)</span> </li>
+                <li>Representative Value Update: <span>\( y_i = \frac{\int_{x_{i-1}}^{x_i} f(x) \cdot x \, dx}{\int_{x_{i-1}}^{x_i} f(x) \, dx} \)</span></li>
+            </ul>
+        </ul>
+
+        <h4 style="font-size: 18px; margin-top: 0px;">Screenshots:</h4>
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-top:15px">
+           
+            <div>
+                <img src="lloyd-max/class.jpg" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; margin-bottom: 20px; "></img>
+            </div>
+            <div>
+                <img src="lloyd-max/cartoon_original.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; margin-bottom: 20px; "></img>
+                <img src="lloyd-max/cartoon_quantized.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
+            </div>
+        </div>
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-top:15px">
+            <div>
+                <img src="lloyd-max/lena_original.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; margin-bottom: 20px; "></img>
+                <img src="lloyd-max/lena_quantized.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
+            </div>
+            <div>
+                <img src="lloyd-max/lena_original.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; margin-bottom: 20px; "></img>
+                <img src="lloyd-max/lena_quantized.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
+            </div>
+        </div>
+ 
+
+
+      
+
+        
+</div>
+</div>
+
+
+
+</body>
+</html>
