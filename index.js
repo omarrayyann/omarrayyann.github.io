@@ -60,3 +60,10 @@ function SVS_B(eAmt, position) {
   if (position == "top")
   window.scrollBy(0, eAmt);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('show-more').addEventListener('click', function() {
+      document.getElementById('more-items').style.display = 'inline';
+      this.style.display = 'none';
+  });
+});
