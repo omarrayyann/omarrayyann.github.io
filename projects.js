@@ -4,12 +4,12 @@ function equalHeightFix(){
 
     var w = document.documentElement.clientWidth;
     if (w>992){
-    for (let rowNumber = 0; rowNumber<6; rowNumber++){
+    for (let rowNumber = 0; rowNumber<7; rowNumber++){
         var height = this.document.getElementById("row"+rowNumber+"Head").getBoundingClientRect().height;
         changeHeights(rowNumber, height);
     }}
     else{
-        for (let rowNumber = 0; rowNumber<6; rowNumber++){
+        for (let rowNumber = 0; rowNumber<7; rowNumber++){
             changeHeights(rowNumber, "auto");
         } 
     }

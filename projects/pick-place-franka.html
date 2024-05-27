@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LE2HGFYSF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1LE2HGFYSF');
+</script>
+
+
+<title>Pick and Place Franka - Omar Rayyan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/experience/apssByOmar_Logo.JPG">
+<link rel="stylesheet" href="/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<script src="projectsIndex.js"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+</head>
+<body>
+
+
+        <nav id="longNav" class="uk-navbar-container uk-margin uk-navbar uk-flex" uk-navbar="mode: click">
+          <div class="uk-navbar-center">
+
+              <ul class="uk-navbar-nav uk-flex-center">
+                <li class="uk-parent"><a href="/index.html" style="text-transform: none; font-size: 15px;">Home</a></li>
+                <li class="uk-active"><a href="/projects.html" style="text-transform: none; font-size: 15px;">Projects</a></li>
+                <li class="uk-parent"><a href="/experience.html" style="text-transform: none; font-size: 15px;">Experience</a></li>
+                <li class="uk-parent"><a href="/participations.html"  style="text-transform: none; font-size: 15px;">Participations</a></li>
+
+                
+                
+              </ul>
+
+          </div>
+      </nav>
+    
+      <nav id="shortNav" class="uk-navbar-container" uk-navbar="mode: click"; style="padding-left: 20px; margin-bottom: 20px">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-parent"><a href="/index.html">Home</a></li>
+                    <li class="uk-active"><a href="/projects.html" style="text-transform: none; font-size: 15px;">Projects</a></li>
+                    <li class="uk-parent"><a href="/experience.html" style="text-transform: none; font-size: 15px;">Experience</a></li>
+                    <li class="uk-parent"><a href="/participations.html" style="text-transform: none; font-size: 15px;">Participations</a></li>
+                    
+                </ul>
+            </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<div class="uk-section uk-section-default" style="padding-top: 10px; padding-bottom: 40px;">
+<div class="uk-container uk-container-small">
+
+        <div class="uk-heading-divider" style="margin-bottom: 0px">
+        <table>
+        <tr>
+            <td>
+            <img class="uk-border-rounded uk-child-width-auto" width="150" height="150" style="border-radius: 26.31px; margin-right: 20px; margin-bottom: 20px; border-style: solid; border-color: rgb(233, 233, 233); border-width: 0.01;" src="/projects/pick-place-franke/logo.png   ">
+        </td>
+        <td id="titleWidth" style="padding-left: 0px;">
+            <h1 id="title" style="margin-bottom: 10px">Pick and Place Robot</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px;"><time>May 2023</time></p>
+        <p uk-margin>
+            <a href="https://github.com/omarrayyann/pick-and-place-franke" class="uk-button uk-button-default uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 155px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>Source Code</span></a>
+
+            
+        </p>  
+        
+    </td>
+    </tr>
+        </table> 
+        </div>
+        <ul class="uk-list uk-list-bullet">
+            <li>Implemented a controller that builds a tower of 3 cubes using pose impedance control.</li>
+            <li>The controller design can be seen in this figure: </li>
+            <img src="pick-place-franke/controller.jpeg" style="margin-top: 40px;">
+            <li style="margin-bottom: 20px;">Demo:</li>
+
+                <video src="pick-place-franke/demo.mp4" alt="RCM-Constrained Manipulator Trajectory Tracking" loop autoplay muted></video>
+
+                <canvas width="200" height="50"></canvas>
+        </ul>
+
+
+
+      
+
+        
+</div>
+</div>
+
+
+
+</body>
+</html>
