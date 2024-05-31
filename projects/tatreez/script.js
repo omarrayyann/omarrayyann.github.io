@@ -25,10 +25,14 @@ for (let i = 0; i < gridSize * gridSize; i++) {
     preview.appendChild(previewCell);
 }
 
+function setEraser() {
+    currentColor = 'white';
+}
+
 function toggleColor(cell, index) {
     const previewCells = document.querySelectorAll('.preview-cell .cross');
 
-    if (cell.style.backgroundColor === currentColor) {
+    if (currentColor === 'white') {
         cell.style.backgroundColor = 'white';
         previewCells[index].style.color = 'transparent'; // Make non-picked crosses transparent
         previewCells[index].style.zIndex = 0;
