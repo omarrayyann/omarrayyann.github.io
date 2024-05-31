@@ -8,14 +8,18 @@
 </head>
 <body>
     <div id="controls">
-        <button onclick="setColor('black')">Black</button>
-        <button onclick="setColor('red')">Red</button>
+        
+        <label for="colorPicker"></label>
+        <input type="color" id="colorPicker" value="#000000">
         <button onclick="clearGrid()">Clear</button>
+        <button onclick="savePreview()">Save</button>
+        <label style="margin-left: 20px;">you're welcome</label>
     </div>
     <div id="canvas-container">
         <div id="grid"></div>
         <div id="preview"></div>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
 </body>
 </html>

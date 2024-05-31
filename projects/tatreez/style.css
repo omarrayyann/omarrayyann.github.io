@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+#controls {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#controls label {
+    margin-right: 10px;
+}
+
+#controls button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+}
+
+#canvas-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#grid, #preview {
+    display: grid;
+    grid-template-columns: repeat(50, 15px);
+    grid-gap: 0; /* Remove gap between cells */
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+.cell {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 0.1px solid #000000;
+    cursor: pointer;
+    position: relative; /* Ensure stacking context for z-index */
+}
+
+.preview-cell {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    position: relative;
+}
+
+.cross {
+    width: 21px; /* Extend the width to ensure overlap */
+    height: 21px; /* Extend the height to ensure overlap */
+    position: absolute;
+    top: -6px; /* Adjust position to reduce the vertical gap */
+    left: -6px; /* Adjust position to reduce the horizontal gap */
+    pointer-events: none; /* Make sure it doesn't interfere with clicks */
+    color: transparent; /* Make non-picked crosses transparent */
+}
+
+.cross::before,
+.cross::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px; /* Make the cross thicker */
+    background-color: currentColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 10px; /* Rounded corners */
+}
+
+.cross::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
