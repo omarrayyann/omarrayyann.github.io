@@ -13,7 +13,7 @@
 </script>
 
 
-<title>IK Neural Network - Omar Rayyan</title>
+<title>comma.ai Control Challenge - Omar Rayyan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/experience/apssByOmar_Logo.JPG">
 <link rel="stylesheet" href="/index.css" />
@@ -22,6 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 <script src="projectsIndex.js"></script>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -75,13 +77,13 @@
         <table>
         <tr>
             <td>
-            <img class="uk-border-rounded uk-child-width-auto" width="150" height="150" style="border-radius: 26.31px; margin-right: 20px; margin-bottom: 20px; border-style: solid; border-color: rgb(233, 233, 233); border-width: 0.01;" src="/projects/IKNN/iknn.png">
+            <img class="uk-border-rounded uk-child-width-auto" width="150" height="150" style="border-radius: 26.31px; margin-right: 20px; margin-bottom: 20px; border-style: solid; border-color: rgb(233, 233, 233); border-width: 0.01;" src="/projects/controls_challenge/logo.png">
         </td>
         <td id="titleWidth" style="padding-left: 0px;">
-            <h1 id="title" style="margin-bottom: 10px">IK Neural Network</h1>
-        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px;"><time>December 2023</time></p>
+            <h1 id="title" style="margin-bottom: 10px">comma.ai Control's Challenge</h1>
+        <p class="uk-text-meta uk-margin-remove-top" style="margin-bottom: 10px;"><time>May 2023</time></p>
         <p uk-margin>
-            <a href="/projects/IKNN/simulation.html" class="uk-button uk-button-default uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 195px; border-radius: 10px;"><i uk-icon="play-circle" class="uk-icon-envelope-o uk-margin-small-right"></i><span>Launch Simulation</span></a>
+            <a href="https://github.com/omarrayyann/controls_challenge" class="uk-button uk-button-default uk-flex uk-flex-middle" style="padding-left: 10px; padding-right: 10px; max-width: 155px; border-radius: 10px;"><i uk-icon="github" class="uk-icon-envelope-o uk-margin-small-right"></i><span>Source Code</span></a>
 
             
         </p>  
@@ -91,29 +93,24 @@
         </table> 
         </div>
         <ul class="uk-list uk-list-bullet">
-            <li>Training a machine learning model to compute the inverse kinematics of a robot manipulator system alongside a live simulation.</li>
-            <li>The model was trained using a dataset generated through forward kinematics simulations, capturing the relationships between end-effector positions and joint angles.</li>
-            <li> For every variation of requried joint angles to reach the end-effector, I randomly generated 20 random angles +/- a maximum of 0.1 euclidean distance from the joint angles the can act as being current joint angles. </li>
-            <li>The distributions of desired joint anglres, current joint angles, and end-effector positions in the generated data can be seen in the graphs below:</li>
-            <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-top:15px">
-                <div>
-                    <img src="IKNN/q-dist.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
-                </div>
-                <div>
-                    <img src="IKNN/eef-dist.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
-
-                </div>
-            </div>
+            <li> Implemented a DDPG-based RL agent that learned to simulate realistic steering responses for a car given a desired trajectory. The implementation won the comma.ai challenge. </li>
+            <!-- <p>Itereative equations used in the algorithm:</p>
+                <li>Decision Boundary Update: <span>\( x_i = \frac{y_i+y_{i+1}}{2} \)</span> </li>
+                <li>Representative Value Update: <span>\( y_i = \frac{\int_{x_{i-1}}^{x_i} f(x) \cdot x \, dx}{\int_{x_{i-1}}^{x_i} f(x) \, dx} \)</span></li>
+            </ul> -->
         </ul>
 
         <h4 style="font-size: 18px; margin-top: 0px;">Screenshots:</h4>
         <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-top:15px">
+           
             <div>
-                <img src="IKNN/iknn-1.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
+                <img src="controls_challenge/rollout.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; margin-bottom: 20px; "></img>
             </div>
             <div>
-                <img src="IKNN/iknn-2.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
+                <img src="controls_challenge/reward-over-time.png" style="border-style: solid; border-color: rgb(179, 179, 179); border-radius: 10px; border-width: 0.1px; "></img>
             </div>
+        </div>
+        
         </div>
  
 
