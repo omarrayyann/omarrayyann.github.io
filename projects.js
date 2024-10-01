@@ -1,29 +1,31 @@
 window.addEventListener('resize', equalHeightFix);
 
-function equalHeightFix(){
+function equalHeightFix() {
 
     var w = document.documentElement.clientWidth;
-    if (w>992){
-    for (let rowNumber = 0; rowNumber<7; rowNumber++){
-        var height = this.document.getElementById("row"+rowNumber+"Head").getBoundingClientRect().height;
-        changeHeights(rowNumber, height);
-    }}
-    else{
-        for (let rowNumber = 0; rowNumber<7; rowNumber++){
+    if (w > 992) {
+        for (let rowNumber = 0; rowNumber < 8; rowNumber++) {
+            var height = this.document.getElementById("row" + rowNumber + "Head").getBoundingClientRect().height;
+            changeHeights(rowNumber, height);
+        }
+    }
+    else {
+        for (let rowNumber = 0; rowNumber < 8; rowNumber++) {
             changeHeights(rowNumber, "auto");
-        } 
+        }
     }
 
 }
 
-function changeHeights(rowNumber, height){
+function changeHeights(rowNumber, height) {
 
-    var elements = document.getElementsByClassName("row"+rowNumber);
+    var elements = document.getElementsByClassName("row" + rowNumber);
 
-    for(var i = 0; i < elements.length; i++) {
-        if(elements[i].id != "row"+rowNumber+"Head"){
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].id != "row" + rowNumber + "Head") {
             console.log(i);
-        elements[i].setAttribute("style","height:" + height + "px;text-align:left");}
+            elements[i].setAttribute("style", "height:" + height + "px;text-align:left");
+        }
     }
 
 }
