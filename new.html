@@ -156,9 +156,170 @@
     </div>
 
 
+
+
+
+
+    <div class="uk-section uk-section-muted" style="padding-top: 40px; width: 100%; padding-bottom: 20px;">
+        <div class="uk-container uk-container" style="max-width: 1080px">
+
+            <h1 style="padding-bottom: 10px; font-weight: 300; font-size: 23px;">Select Robot Demos:</h1>
+
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
+
+
+
+                <!-- CARD -->
+
+                <!-- CARD -->
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
+                        <video width=" 100%" height="100%" autoplay loop muted>
+                            <source src="home/clean.mp4" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">Modified UMI (in-progress)</p>
+                </div>
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
+                        <video width="100%" height="100%" autoplay loop muted>
+                            <source src="home/pick.mp4" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">Behavioral cloning with custom UMI motor</p>
+                </div>
+
+
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
+                        <video width="100%" height="100%" autoplay loop muted>
+                            <source src="home/prompt.mp4" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">Open-vocab beyond pick-place (in-progress)</p>
+                </div>
+
+            </div>
+
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
+
+
+
+                <!-- CARD -->
+
+                <!-- CARD -->
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <video width="100%" height="100%" autoplay loop muted>
+                            <source src="home/mujoco_ar_umi.mov" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">Open-sourced <a
+                            href="projects/mujoco_ar.html">mujoco_ar</a> for MuJoCo</p>
+
+                </div>
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card"
+                        style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 0px;">
+                        <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it. -->
+                        <video autoplay loop muted
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.1); width: auto; height: 100%; object-fit: cover;">
+                            <source src="home/open-vocab.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">AnyGrasp + LangSAM + ConceptGraph</p>
+                </div>
+
+
+
+
+
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card"
+                        style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 0px;">
+                        <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
+                        <video autoplay loop muted
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%;">
+                            <source src="home/RCM_Video.mov" type="video/mp4">
+                        </video>
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">RCM Constraint Algorithmically Held <a
+                            href="https://arxiv.org/abs/2409.05740">(paper)</a></p>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
+
+
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <video width="100%" height="100%" autoplay loop muted>
+                            <source src="home/closet.mp4" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">Quick affordance learning (in-progress)</p>
+                </div>
+
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card">
+                        <video width="100%" height="100%" autoplay loop muted>
+                            <source src="home/ar_all.mp4" type="video/mp4">
+                    </div>
+                    <p style="margin-top: 10px; text-align: left;">MuJoCo tasks accompanying <a
+                            href="projects/mujoco_ar.html">mujoco_ar</a></p>
+
+                </div>
+
+
+
+
+
+                <div>
+                    <div class="uk-card-default uk-width-1-1@m" id="card"
+                        style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; border-radius: 0px;">
+                    </div>
+                    <!-- <p style="margin-top: 10px; text-align: left;">MuJoCo tasks accompanying <a
+                            href="projects/mujoco_ar.html">mujoco_ar</a></p> -->
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
     <!---->
 
-    <div id="latestProjects" class="uk-section-muted uk-section-default" style="padding-top: 55px;">
+    <div id="latestProjects" class="uk-section uk-section-default" style="padding-top: 55px;">
         <div class="uk-container uk-container-medium" style="max-width: 800px">
 
             <h1 style="padding-bottom: 10px; font-weight: 300; font-size: 23px;">Updates:</h1>
@@ -275,159 +436,6 @@
             <div style="padding-bottom: 10px"></div>
 
         </div>
-
-
-        <div class="uk-section uk-section-default" style="padding-top: 40px; width: 100%; padding-bottom: 20px;">
-            <div class="uk-container uk-container" style="max-width: 1080px">
-
-                <h1 style="padding-bottom: 10px; font-weight: 300; font-size: 23px;">Select Robot Demos:</h1>
-
-                <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
-
-
-
-                    <!-- CARD -->
-
-                    <!-- CARD -->
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
-                            <video width=" 100%" height="100%" autoplay loop muted>
-                                <source src="home/clean.mp4" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">Modified UMI (in-progress)</p>
-                    </div>
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
-                            <video width="100%" height="100%" autoplay loop muted>
-                                <source src="home/pick.mp4" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">Behavioral cloning with custom UMI motor</p>
-                    </div>
-
-
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
-                            <video width="100%" height="100%" autoplay loop muted>
-                                <source src="home/prompt.mp4" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">Open-vocab beyond pick-place (in-progress)</p>
-                    </div>
-
-                </div>
-
-                <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
-
-
-
-                    <!-- CARD -->
-
-                    <!-- CARD -->
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <video width="100%" height="100%" autoplay loop muted>
-                                <source src="home/mujoco_ar_umi.mov" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">Open-sourced <a
-                                href="projects/mujoco_ar.html">mujoco_ar</a> for MuJoCo</p>
-
-                    </div>
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card"
-                            style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 0px;">
-                            <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it. -->
-                            <video autoplay loop muted
-                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.1); width: auto; height: 100%; object-fit: cover;">
-                                <source src="home/open-vocab.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">AnyGrasp + LangSAM + ConceptGraph</p>
-                    </div>
-
-
-
-
-
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card"
-                            style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 0px;">
-                            <!-- Put the video at updates/RCM_Video.mov on loop here and hide the controllers and autoplay it .-->
-                            <video autoplay loop muted
-                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%;">
-                                <source src="home/RCM_Video.mov" type="video/mp4">
-                            </video>
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">RCM Constraint Algorithmically Held <a
-                                href="https://arxiv.org/abs/2409.05740">(paper)</a></p>
-                    </div>
-
-
-
-
-
-
-                </div>
-
-
-                <div class="uk-child-width-expand@s uk-text-center" uk-grid uk-height-match="target: > div > .uk-card">
-
-
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <video width="100%" height="100%" autoplay loop muted>
-                                <source src="home/closet.mp4" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">Quick affordance learning (in-progress)</p>
-                    </div>
-
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card">
-                            <video width="100%" height="100%" autoplay loop muted>
-                                <source src="home/ar_all.mp4" type="video/mp4">
-                        </div>
-                        <p style="margin-top: 10px; text-align: left;">MuJoCo tasks accompanying <a
-                                href="projects/mujoco_ar.html">mujoco_ar</a></p>
-
-                    </div>
-
-
-
-
-
-                    <div>
-                        <div class="uk-card-default uk-width-1-1@m" id="card"
-                            style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; border-radius: 0px;">
-                        </div>
-                        <!-- <p style="margin-top: 10px; text-align: left;">MuJoCo tasks accompanying <a
-                                href="projects/mujoco_ar.html">mujoco_ar</a></p> -->
-                    </div>
-
-
-
-
-                </div>
-
-
-
-            </div>
-        </div>
-
 
 
 
