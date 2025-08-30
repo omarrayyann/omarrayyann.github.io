@@ -12,28 +12,26 @@
             padding: 45px;
         }
 
-        @media (max-width: 767px) {
-            .markdown-body {
-                padding: 15px;
-            }
-
-            .left {
-                width: 100%;
-            }
-
-            .right {
-                width: 100%;
-            }
-
-            .portrait {
-                margin-bottom: 1em;
-            }
-
-            .column-third {
-                float: left;
-                width: 100%;
-            }
-        }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+      .row {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+      }
+      .left, .right {
+        width: auto;
+        text-align: left;
+      }
+      .portrait {
+        margin-bottom: 1em;
+      }
+      .column-third {
+        float: left;
+        width: 100%;
+      }
+    }
 
         html {
             width: 100vw;
